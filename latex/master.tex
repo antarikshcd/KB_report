@@ -1,0 +1,84 @@
+%====================================================================
+% MAIN DOCUMENT
+%====================================================================
+
+\documentclass[
+oneside,
+paper=a4,
+fontsize=9pt,
+parskip=half,        % vertical inter-paragraph spacing instead of indentation
+DIV=12,              % "stripes" for layout definition
+BCOR=10mm,           % binding correction
+headings=normal,
+appendixprefix=true, % Put "Appendix A" at the beginning...
+]{scrbook}			% for larger works use book
+%open=any             % New chapter may begin on any page
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{amssymb}
+\usepackage{amsmath}
+%\usepackage{draftwatermark}
+%\SetWatermarkScale{2}
+%\usepackage{siunitx}
+\usepackage[multidot]{grffile}   % Unusual file names support.
+\usepackage[hyphens]{url}
+\urlstyle{sf}
+\usepackage{rotating}
+\usepackage[numbers,square]{natbib}
+%\usepackage{threeparttable}
+%\bibliographystyle{unsrtnat}
+\setcounter{page}{2}  % Page one is added manually, start counting at 2.
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\manualmark
+\usepackage{longtable}
+\usepackage[table]{xcolor}
+\usepackage{epstopdf}
+\usepackage[breaklinks]{hyperref}
+%\usepackage{hypdvips}
+\ifoot[]{}
+
+\usepackage{caption}
+%\usepackage{subfigure}
+\usepackage{subcaption}
+%\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\usepackage[hyphenbreaks]{breakurl}
+\begin{document}
+\title{Design Optimization study of the 100 kW Rotor\\
+\vspace{0.5cm}
+Development and Demonstration of A Hybrid 100 kW Passive-Controller\\
+Wind Turbine Smart Rotor Toward Mega-Watt Turbines\\
+Revision 1}
+\vspace{0.5cm}
+\author{Frederik Zahle, Michael McWilliam, David Verelst}
+
+\maketitle
+
+%\newpage
+%\thispagestyle{empty}
+%\mbox{}
+
+%\pagebreak \thispagestyle{empty}~
+\tableofcontents
+
+%\newpage
+
+\input{optimized_designs}
+\clearpage
+\input{dlb}
+%\input{conclusions}
+\clearpage
+
+%\appendix
+%\include{dlb-appendix}
+
+\bibliographystyle{abbrvnat}
+\bibliography{references}
+
+\end{document}
+
+\pagebreak \thispagestyle{empty}

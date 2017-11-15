@@ -248,18 +248,22 @@ This does not include adhesives, surface finishing, and a complete root design.
 \end{figure}
 
 \clearpage
-
+%%------------------------------------------------------------------------------------------------------
+%% Start of design compariosions from HAWTOpt2
+%%-----------------------------------------------------------------------------------------------------
 \section{Design Studies}
 
-In this section three design studies are presented:
+In this section five design studies are presented:
 
 \begin{itemize}
 	\item \textbf{KB1}: Optimized straight blade. This blade is optimized with constraints on blade torsion to be less than 1 degree at the tip, and no design freedom is given to introduce sweep or material couplings.
 	\item \textbf{KB2}: Optimized swept blade. This blade is optimized without constraints on blade torsion and given design freedom to introduce sweep, but not material couplings.
 	\item \textbf{KB3}: Optimized material coupled blade. This blade is optimized without constraints on blade torsion and given design freedom to introduce material couplings in the spar cap, but not sweep.
+	\item \textbf{KB4}: Optimized swept blade with fixed rotor speed schedule. This blade is optimized without constraints on blade torsion and given design freedom to introduce sweep, but not material couplings. Compared to KB2, additional constraints have been placed on the sweep and prebend. The sweep is constrained to achieve only backward sweep with a maximum limit on its value not exceeding 5\% of the reference blade length. The prebend too has been constrained to only bend away from the tower with a maximum limit on its value not exceeding 10\% of the reference blade length. An outer layer of triax is added, which is maintained at a fixed thickness through the optimization. The spar cap width is disallowed design freedom. These design decisions have been taken to address manufacturing and structural concerns. Importantly, this design has a fixed rotor speed schedule calculated based on the design tip-speed ratio of the reference blade. 
+	\item \textbf{KB6}: Optimized swept blade. This blade is optimized without constraints on blade torsion and given design freedom to introduce sweep , but not material couplings. It incorporates the same design decisions as applied to KB4. However, unlike KB4 the rotor speed schedule is allowed design freedom to vary through the optimization. 
 \end{itemize}
 
-All three designs are made with identical optimization problem definitions, that is, same objective and constraints, as well as identical design variables, except for the above mentioned differences. The problem definition is summarized below.
+All five designs are made with identical optimization problem definitions, that is, same objective and constraints, as well as identical design variables, except for the above mentioned differences. The problem definition is summarized below.
 
 The cost function is defined as
 \begin{equation}
@@ -298,22 +302,24 @@ Chord					&	6	&	-	\\
 Twist					&	5	&	Root twist fixed	\\
 Relative thickness		&	4	& 	Root and tip relative thickness fixed	\\
 Out of plane Prebend		&	3	& 	- \\
-In-plane sweep			&	4	&	Only active for KB2 design \\
+In-plane sweep			&	4	&	Active for KB2, KB4 and KB6 design \\
 Pitch axis aft LE		&	4	& 	- \\
 Blade length				&	1	&	- \\
-Tip-speed ratio			&	1	&	- \\
+Tip-speed ratio			&	1	&	Inactive in KB4 to ensure fixed RPM schedule. \\
 Trailing edge uniax		&	4	&	Symmetric pressure/suction side	\\
 Spar cap uniax			&	4	&	Symmetric pressure/suction side	\\
 Leading edge uniax		&	4	&	Symmetric pressure/suction side	\\
 Leading panels triax		&	4	&	Symmetric pressure/suction side	\\
 Trailing panels triax	&	4	&	Symmetric pressure/suction side	\\
-Spar cap width			& 	2	&	Linearly tapered spar cap \\
+Spar cap width			& 	2	&	Linearly tapered spar cap. Inactive in KB4 and KB6. \\
 Suction side spar cap fibre angle	&	4	&	Only active for KB3 design	\\
 Pressure side spar cap fibre angle	&	4	&	Only active for KB3 design	\\
 \hline
 \textbf{KB1 Total}		&	44	&	\\
 \textbf{KB2 Total}		&	48	&	\\
 \textbf{KB3 Total}		&	52	&	\\
+\textbf{KB4 Total}		&	48	&	\\
+\textbf{KB6 Total}		&	49	&	\\
 \hline
 \end{tabular}
 \caption{Free form deformation spline (FFD) design variables used in the optimizations.}
@@ -357,23 +363,55 @@ All blades operate at high tip speed ratio, compared to the starting point of th
 Since the blade mass was a constraint in the optimizations, all three blades have the same mass.
 
 \begin{table}
-\begin{tabular}{l|l|ll|ll}
+\begin{tabular}{l|l|l|l|l|l|l}
 \hline
- Quantity     & KB1           & KB2           & Diff.          & KB3           & Diff.          \\
+ Quantity              & Reference & KB1 & KB2     & KB3     & KB4    & KB6          \\
 \hline
- AEP [kWh] (C=7, k=2)     & 405166.92 & 412457.64  & 1.018  & 408943262.858 & 1.009  \\
- Blade length [m] & 11.064 & 11.35  & 1.026  & 11.231  & 1.015  \\
- blade\_mass [kg]  & 256.87 & 257.14 & 0.999 & 256.85  & 0.999 \\
- TSR [-]          & 10.084 & 10.625  & 1.054   & 9.779 & 0.970 \\
+ AEP [MWhr] (A=6, k=2) & 212.38 & 243.82 & 252.18  & 249.08  & 224.67 & 236.77  \\
+ Blade length [m]      & 10.00  & 11.06  & 11.41   & 11.22   & 10.48  & 10.55  \\
+ blade\_mass [kg]      & 273.16 & 256.87 & 257.71  & 256.65  & 254.53 & 260.46 \\
+ TSR [-]               & 7.50   & 10.08  & 10.625  &  9.779  & 7.47   & 9.77 \\
 \hline
 \hline
 \end{tabular}
-\caption{Summary of overall properties of the three blade designs.}
+\caption{Summary of overall properties of the five optimized blades.}
 \label{tab:overall_summary}
 \end{table}
 
+%\begin{table}
+%\begin{tabular}{l|l|l|l|l|l|l}
+%\hline
+% Quantity             &  KB1 & KB2     & KB3     & KB4    & KB6          \\
+%\hline
+% AEP (A=6, k=2)  & +14.80\%  & +18.74\%  & +17.28\%   & +5.79\%   &  +11.48\% \\
+% Blade length    &  +10.6\% & +14.1\%   & +12.2\%   &  +4.8\%  & +5.5\%  \\
+% blade\_mass      & -5.96\% & -5.66\%  & -6.04\%  & -6.82\% &  -4.65\%\\
+% TSR             & +34.4\%  & +41.67\%  &  +30.39\%  & -0.4\%   & +30.27\% \\
+%\hline
+%\hline
+%\end{tabular}
+%\caption{Summary of relative change of overall properties of the five optimized designs with respect to the reference blade.}
+%\label{tab:overall_summary}
+%\end{table}
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|l|l||l|l||l|l||l|l||l|l||l|l||}
+\hline
+\multirow{2}{*}{Quantity}                         & Reference & \multicolumn{2}{l||}{KB1} & \multicolumn{2}{l||}{KB2} & \multicolumn{2}{l||}{KB3} & \multicolumn{2}{l||}{KB4} & \multicolumn{2}{l||}{KB6} \\ \cline{2-12}
+                 & Value     & Value      & Change     & Value      & Change     & Value      & Change     & Value      & Change     & Value      & Change     \\\hline
+AEP{[}MWhr{]} (A=6, k=2) & 212.38    & 243.82     &  +14.80\%          & 252.18     &   +18.74\%         & 249.08     &   +17.28\%         & 224.67     &       +5.79\%     & 236.77     &    +11.48\%        \\ 
+Blade length {[}m{]}     & 10        & 11.06      &   +10.6\%         & 11.41      &    +14.1\%         & 11.22      &   +12.2\%         & 10.48      &        +4.8\%     & 10.55      &  +5.5\%          \\ 
+blade\_mass {[}kg{]}     & 273.16    & 256.87     &   -5.96\%         & 257.71     &    -5.66\%        & 256.65     &    -6.04\%         & 254.53     &        -6.82\%    & 260.46     &       -4.65\%     \\ 
+TSR {[}-{]}              & 7.50      & 10.08      &    +34.4\%        & 10.62      &   +41.67\%         & 9.78       &    +30.39\%         & 7.47       &      -0.4\%      & 9.77       &     +30.27\%  \\ \hline    
+\end{tabular}}
+\end{table}
+
 Figures \ref{fig:power} to \ref{fig:rpm} show the rotor steady state performance as function of wind speed.
-In Figure \ref{fig:powerratio}, the ratio between KB2 and KB3 relative to KB1 shows that at low wind speeds KB2 produces 8 \% more power than KB1 whereas KB3 produces 4\% more.
+%In Figure \ref{fig:powerratio}, the ratio between KB2 and KB3 relative to KB1 shows that at low wind speeds KB2 produces 8 \% more power than KB1 whereas KB3 produces 4\% more.
 As seen in Figure \ref{fig:ct}, bth KB2 and KB3 have a noticeably different characteristic in terms of loading compared to KB1.
 Where KB1 in the constant tip speed ratio region has a constant $C_T$, KB2 and KB3 show a decreasing loading as function of wind speed.
 This is due to the torsional coupling, since the blades torsion increasingly with increased wind speed.
@@ -381,57 +419,65 @@ Common to all three blades is that the high TSR operation causes the constant TS
 
 \begin{figure}[!ht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_power_curve.eps}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_AEPcomp.eps}
 \end{center}
-\caption{Mechanical power as function of wind speed for the three optimized blades.}
+\caption{Annual energy production of the five optimized blades for a Weibull wind distribution with scale factor A=6.0 m/s and shape factor k= 2.0 [-].}
+\label{fig:KB_AEP}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_power.eps}
+\end{center}
+\caption{Mechanical power as function of wind speed for the five optimized blades.}
 \label{fig:power}
 \end{figure}
 
-\begin{figure}[!ht]
-\begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_power_ratio.eps}
-\end{center}
-\caption{Ratio of mechanical power as function of wind speed for KB2 and KB3 relative to KB1.}
-\label{fig:powerratio}
-\end{figure}
+%\begin{figure}[!ht]
+%\begin{center}
+%	\includegraphics[width=.85\linewidth]{figures/KB_power_ratio.eps}
+%\end{center}
+%\caption{Ratio of mechanical power as function of wind speed for KB2 and KB3 relative to KB1.}
+%\label{fig:powerratio}
+%\end{figure}
 
 \begin{figure}[!ht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_thrust.eps}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_thrust.eps}
 \end{center}
-\caption{Rotor thrust as function of wind speed for the three optimized blades.}
+\caption{Rotor thrust as function of wind speed for the five optimized blades.}
 \label{fig:thrust}
 \end{figure}
 
 \begin{figure}[!ht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_power_coefficient.eps}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_Cp.eps}
 \end{center}
-\caption{Rotor thrust as function of wind speed for the three optimized blades.}
+\caption{Mechanical power coefficient as function of wind speed for the five optimized blades.}
 \label{fig:cp}
 \end{figure}
 
 \begin{figure}[!ht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_thrust_coefficient.eps}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_CT.eps}
 \end{center}
-\caption{Rotor thrust as function of wind speed for the three optimized blades.}
+\caption{Rotor thrust coefficient as function of wind speed for the five optimized blades.}
 \label{fig:ct}
 \end{figure}
 
 \begin{figure}[!ht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_pitch.eps}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_pitch.eps}
 \end{center}
-\caption{Blade pitch as function of wind speed for the three optimized blades.}
+\caption{Blade pitch as function of wind speed for the five optimized blades.}
 \label{fig:pitch}
 \end{figure}
 
 \begin{figure}[!ht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_rpm.eps}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_rpm.eps}
 \end{center}
-\caption{Rotor speed as function of wind speed for the three optimized blades.}
+\caption{Rotor speed as function of wind speed for the five optimized blades.}
 \label{fig:rpm}
 \end{figure}
 
@@ -448,51 +494,51 @@ For all blades, the cross-section is moved forward towards the tip, somewhat les
 
 \begin{figure}[!ht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_chord.eps}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_chord.eps}
 \end{center}
-\caption{Blade chord distributions for the three optimized blades.}
+\caption{Blade chord distributions for the five optimized blades.}
 \label{fig:chord}
 \end{figure}
 
 
 \begin{figure}[!ht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_twist.eps}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_twist.eps}
 \end{center}
-\caption{Blade twist distributions for the three optimized blades.}
+\caption{Blade twist distributions for the five optimized blades.}
 \label{fig:twist}
 \end{figure}
 
 \begin{figure}[!ht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_rthick.eps}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_rthick.eps}
 \end{center}
-\caption{Blade relative thickness distributions for the three optimized blades.}
+\caption{Blade relative thickness distributions for the five optimized blades.}
 \label{fig:rthick}
 \end{figure}
 
 
 \begin{figure}[!ht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_p_le.eps}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_ple.eps}
 \end{center}
-\caption{Blade relative thickness distributions for the three optimized blades.}
+\caption{Non-dimensionalized blade axis leading edge offset distributions for the five optimized blades.}
 \label{fig:p_le}
 \end{figure}
 
 \begin{figure}[!ht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_prebend.eps}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_prebend.eps}
 \end{center}
-\caption{Blade relative thickness distributions for the three optimized blades.}
+\caption{Blade pre-bend distributions for the five optimized blades.}
 \label{fig:prebend}
 \end{figure}
 
 \begin{figure}[!ht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_sweep.eps}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_sweep.eps}
 \end{center}
-\caption{KB2 blade sweep.}
+\caption{Blade sweep distributions for the five optimized blades.}
 \label{fig:sweep}
 \end{figure}
 
@@ -500,16 +546,16 @@ For all blades, the cross-section is moved forward towards the tip, somewhat les
 
 The overall structural topology is the same for all three blades, shown in Figure \ref{fig:loftedstructure_baseline_tipview}.
 As summarized in the optimization setup, Table \ref{tab:dv_summary}, the spar cap width was allowed to change linearly from root to tip.
-Changing cap width did, however, not change the distance between the two main shear webs, see Figure \ref{fig:cross_section_def} for a schematic of the cross-section parameterisation.
+Changing cap width did, however, not change the distance between the two main shear webs, see Figure \ref{fig:cross_section_def} for a schematic of the cross-section parametrization.
 
 Figure \ref{fig:capwidth} shows the resulting spar cap widths for the three blade designs compared to the Reference design.
 The two blades without sweep, KB1 and KB3, result in an increased cap width in the blade root, whereas the swept design ends up with a more slender spar cap.  
 
 \begin{figure}[!ht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB_spar_cap_width.eps}
+	\includegraphics[width=.85\linewidth]{figures/KBcomp_spar_cap_width.eps}
 \end{center}
-\caption{KB2 blade sweep.}
+\caption{Blade spar cap width distributions for the five optimized blades.}
 \label{fig:capwidth}
 \end{figure}
 
@@ -546,7 +592,7 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 	\includegraphics[width=.85\linewidth]{figures/KB1_region02.eps}
 \end{center}
 \caption{Material thicknesses in the main panel (immediately behind the spar cap) of the KB1 blade.}
-\label{fig:matstackr02}
+\label{fig:KB1matstackr02}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -554,7 +600,7 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 	\includegraphics[width=.85\linewidth]{figures/KB1_region04.eps}
 \end{center}
 \caption{Material thicknesses in the spar cap of the KB1 blade.}
-\label{fig:matstackr04}
+\label{fig:KB1matstackr04}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -562,7 +608,7 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 	\includegraphics[width=.85\linewidth]{figures/KB1_region06.eps}
 \end{center}
 \caption{Material thicknesses in the leading region (immediately in front of the spar cap) of the KB1 blade.}
-\label{fig:matstackr06}
+\label{fig:KB1matstackr06}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -570,7 +616,7 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 	\includegraphics[width=.85\linewidth]{figures/KB1_region07.eps}
 \end{center}
 \caption{Material thicknesses in the leading edge reinforcement of the KB1 blade.}
-\label{fig:matstackr07}
+\label{fig:KB1matstackr07}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -578,7 +624,7 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 	\includegraphics[width=.85\linewidth]{figures/KB2_region01.eps}
 \end{center}
 \caption{Material thicknesses in the trailing edge reinforcement of the KB2 blade.}
-\label{fig:matstackr01}
+\label{fig:KB2matstackr01}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -586,7 +632,7 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 	\includegraphics[width=.85\linewidth]{figures/KB2_region02.eps}
 \end{center}
 \caption{Material thicknesses in the main panel (immediately behind the spar cap) of the KB2 blade.}
-\label{fig:matstackr02}
+\label{fig:KB2matstackr02}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -594,7 +640,7 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 	\includegraphics[width=.85\linewidth]{figures/KB2_region04.eps}
 \end{center}
 \caption{Material thicknesses in the spar cap of the KB2 blade.}
-\label{fig:matstackr04}
+\label{fig:KB2matstackr04}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -602,7 +648,7 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 	\includegraphics[width=.85\linewidth]{figures/KB2_region06.eps}
 \end{center}
 \caption{Material thicknesses in the leading region (immediately in front of the spar cap) of the KB2 blade.}
-\label{fig:matstackr06}
+\label{fig:KB2matstackr06}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -610,7 +656,7 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 	\includegraphics[width=.85\linewidth]{figures/KB2_region07.eps}
 \end{center}
 \caption{Material thicknesses in the leading edge reinforcement of the KB2 blade.}
-\label{fig:matstackr07}
+\label{fig:KB2matstackr07}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -618,7 +664,7 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 	\includegraphics[width=.85\linewidth]{figures/KB3_region01.eps}
 \end{center}
 \caption{Material thicknesses in the trailing edge reinforcement of the KB3 blade.}
-\label{fig:matstackr01}
+\label{fig:KB3matstackr01}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -626,7 +672,7 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 	\includegraphics[width=.85\linewidth]{figures/KB3_region02.eps}
 \end{center}
 \caption{Material thicknesses in the main panel (immediately behind the spar cap) of the KB3 blade.}
-\label{fig:matstackr02}
+\label{fig:KB3matstackr02}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -634,7 +680,7 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 	\includegraphics[width=.85\linewidth]{figures/KB3_region04.eps}
 \end{center}
 \caption{Material thicknesses in the spar cap of the KB3 blade.}
-\label{fig:matstackr04}
+\label{fig:KB3matstackr04}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -642,7 +688,7 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 	\includegraphics[width=.85\linewidth]{figures/KB3_region06.eps}
 \end{center}
 \caption{Material thicknesses in the leading region (immediately in front of the spar cap) of the KB3 blade.}
-\label{fig:matstackr06}
+\label{fig:KB3matstackr06}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -653,6 +699,86 @@ Figures \ref{fig:KB1matstackr01} to \ref{fig:KB3matstackr07} show the material s
 \label{fig:KB3matstackr07}
 \end{figure}
 
+\begin{figure}[!ht]
+\begin{center}
+	\includegraphics[width=.85\linewidth]{figures/KB4_laminate_layers_r01.eps}
+\end{center}
+\caption{Material thicknesses in the trailing edge reinforcement of the KB4 blade.}
+\label{fig:KB4matstackr01}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+	\includegraphics[width=.85\linewidth]{figures/KB4_laminate_layers_r02.eps}
+\end{center}
+\caption{Material thicknesses in the main panel (immediately behind the spar cap) of the KB4 blade.}
+\label{fig:KB4matstackr02}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+	\includegraphics[width=.85\linewidth]{figures/KB4_laminate_layers_r04.eps}
+\end{center}
+\caption{Material thicknesses in the spar cap of the KB4 blade.}
+\label{fig:KB4matstackr04}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+	\includegraphics[width=.85\linewidth]{figures/KB4_laminate_layers_r06.eps}
+\end{center}
+\caption{Material thicknesses in the leading region (immediately in front of the spar cap) of the KB4 blade.}
+\label{fig:KB4matstackr06}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+	\includegraphics[width=.85\linewidth]{figures/KB4_laminate_layers_r07.eps}
+\end{center}
+\caption{Material thicknesses in the leading edge reinforcement of the KB4 blade.}
+\label{fig:KB4matstackr07}
+\end{figure}
+
+
+\begin{figure}[!ht]
+\begin{center}
+	\includegraphics[width=.85\linewidth]{figures/KB6_laminate_layers_r01.eps}
+\end{center}
+\caption{Material thicknesses in the trailing edge reinforcement of the KB6 blade.}
+\label{fig:KB6matstackr01}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+	\includegraphics[width=.85\linewidth]{figures/KB6_laminate_layers_r02.eps}
+\end{center}
+\caption{Material thicknesses in the main panel (immediately behind the spar cap) of the KB6 blade.}
+\label{fig:KB6matstackr02}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+	\includegraphics[width=.85\linewidth]{figures/KB6_laminate_layers_r04.eps}
+\end{center}
+\caption{Material thicknesses in the spar cap of the KB blade.}
+\label{fig:KB6matstackr04}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+	\includegraphics[width=.85\linewidth]{figures/KB6_laminate_layers_r06.eps}
+\end{center}
+\caption{Material thicknesses in the leading region (immediately in front of the spar cap) of the KB6 blade.}
+\label{fig:KB6matstackr06}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+	\includegraphics[width=.85\linewidth]{figures/KB6_laminate_layers_r07.eps}
+\end{center}
+\caption{Material thicknesses in the leading edge reinforcement of the KB6 blade.}
+\label{fig:KB6matstackr07}
+\end{figure}
 %\section{CFD Evaluation of the KB2 Blade}
 
 

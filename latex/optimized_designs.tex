@@ -226,7 +226,7 @@ The structural geometry for the blade is plotted in Figure \ref{fig:loftedstruct
 \end{table}
 
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=1\linewidth]{figures/baseline_blade_tipview.eps}
 \end{center}
@@ -260,7 +260,7 @@ In this section five design studies are presented:
 	\item \textbf{KB1}: Optimized straight blade. This blade is optimized with constraints on blade torsion to be less than 1 degree at the tip, and no design freedom is given to introduce sweep or material couplings.
 	\item \textbf{KB2}: Optimized swept blade. This blade is optimized without constraints on blade torsion and given design freedom to introduce sweep, but not material couplings.
 	\item \textbf{KB3}: Optimized material coupled blade. This blade is optimized without constraints on blade torsion and given design freedom to introduce material couplings in the spar cap, but not sweep.
-	\item \textbf{KB4}: Optimized swept blade with fixed rotor speed schedule. This blade is optimized without constraints on blade torsion and given design freedom to introduce sweep, but not material couplings. Compared to KB2, additional constraints have been placed on the sweep and prebend. The sweep is constrained to achieve only backward sweep with a maximum limit on its value not exceeding 5\% of the reference blade length. The prebend too has been constrained to only bend away from the tower with a maximum limit on its value not exceeding 10\% of the reference blade length. An outer layer of triax is added, which is maintained at a fixed thickness through the optimization. The spar cap width is disallowed design freedom. These design decisions have been taken to address manufacturing and structural concerns. Importantly, this design has a fixed rotor speed schedule calculated based on the design tip-speed ratio of the reference blade. 
+	\item \textbf{KB4}: Optimized swept blade with fixed rotor speed schedule. This blade is optimized without constraints on blade torsion and given design freedom to introduce sweep, but not material couplings. Compared to KB2, additional constraints have been placed on the sweep and prebend. The sweep is constrained to achieve only backward sweep with a maximum limit on its value not exceeding 5\% of the reference blade length. The sweep is only allowed from 60\% blade span and onwards. The prebend too has been constrained to only bend away from the tower with a maximum limit on its value not exceeding 10\% of the reference blade length. An outer layer of triax is added, which is maintained at a fixed thickness through the optimization. The spar cap width is disallowed design freedom. These design decisions have been taken to address manufacturing and structural concerns. Importantly, this design has a fixed rotor speed schedule calculated based on the design tip-speed ratio of the reference blade. 
 	\item \textbf{KB6}: Optimized swept blade. This blade is optimized without constraints on blade torsion and given design freedom to introduce sweep, but not material couplings. It incorporates the same design decisions as applied to KB4. However, unlike KB4 the rotor speed schedule is allowed design freedom to vary through the optimization. 
 \end{itemize}
 
@@ -292,7 +292,7 @@ The constraints $\mathbf{k}$ depend on both the planform and structural variable
 
 Tables \ref{tab:dv_summary} and \ref{tab:con_summary} provides a summary of design variables and constraints used in this study.
 
-\begin{table}
+\begin{table}[pth]
 \centering
 \caption{Free form deformation spline (FFD) design variables used in the optimizations.}
 \small
@@ -327,7 +327,7 @@ Pressure side spar cap fibre angle	&	4	&	Only active for KB3 design	\\
 \label{tab:dv_summary}
 \end{table}
 
-\begin{table}
+\begin{table}[pth]
 \centering
 \caption{Non-linear constraints used in the design process.}
 \small
@@ -360,7 +360,7 @@ Lift coefficient @ $r/R=[0.5-1.]$	&	$<$ 1.4-1.1			&	Limit operational lift coeff
 \label{tab:con_summary}
 \end{table}
 
-\subsection{Designs Overview}
+\subsection{Overview of the designs}
 \label{subsec:design_overview}
 The overall properties of the five optimized blades and the reference design are listed in Table \ref{tab:overall_summary}, along with their relative changes with respect to the reference blade.
 Both KB2 and KB3 produce higher AEP than the non-coupled KB1 blade, and we also see that swept KB2 blade performs better than the material coupled design KB3. The increased performance of KB2 is also reflected in the slightly longer blade length of 11.35 m, compared to 11.064 and 11.231 of KB1 and KB3.
@@ -402,7 +402,7 @@ All blades operate at high tip speed ratio, compared to the starting point of th
 %\label{tab:overall_summary}
 %\end{table}
 
-\begin{table}[!ht]
+\begin{table}[pht]
 \centering
 \caption{Summary of overall properties of the five optimized blades.}
 \label{tab:overall_summary}
@@ -430,7 +430,7 @@ Figure \ref{fig:powerratio} depicts the ratio of the power produced in the optim
 It should be noted that the extra power being produced in the KB3 design stems from the difference in the tool used for its aeroelastic evaluation compared to the rest of the blades. KB3, being a material coupled design, had to be evaluated using the time domain aero-servo-elastic tool HAWC2, whereas the rest of the designs were evaluated with the HAWCStab2 aeroelastic solver. This was required as HAWCStab2 currently lacks the functionality to evaluate material coupled designs. Being a time domain tool, HAWC2 requires a tuned controller to curtail the power output to rated, for the region above the rated wind speed. The need to tune the controller arises with a change in the rotor design. The optimization framework provided by HAWTOpt2 currently lacks the capability to tune the controller for the constant speed region above the rated wind speed. Thus, KB3 operates with the tuning parameters from the reference blade. The influence of the performance of the turbine in the region above the rated wind speed is minimal on the optimization and the resulting final design. Since this region is pitch controlled, the loads will not exceed those experienced in the variable speed region. The load reduction in the variable speed is one of the main design drivers in the aeroelastically tailored blade for a pitch regulated variable speed turbine. Additionally, the high wind speeds encountered above rated have a low chance of occurrence for the given wind climate. Finally, it was decided to proceed with a swept blade design and hence additional resources were not spent in the tuning of the controller and revaluation of the KB3 design with the tuned controller, especially since it is not expected to result in a significant difference over the current design.
 
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_AEPcomp.eps}
 \end{center}
@@ -438,7 +438,7 @@ It should be noted that the extra power being produced in the KB3 design stems f
 \label{fig:KB_AEP}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_power.eps}
 \end{center}
@@ -446,7 +446,7 @@ It should be noted that the extra power being produced in the KB3 design stems f
 \label{fig:power}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_power_ratio.eps}
 \end{center}
@@ -454,7 +454,7 @@ It should be noted that the extra power being produced in the KB3 design stems f
 \label{fig:powerratio}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_thrust.eps}
 \end{center}
@@ -462,7 +462,7 @@ It should be noted that the extra power being produced in the KB3 design stems f
 \label{fig:thrust}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_Cp.eps}
 \end{center}
@@ -470,7 +470,7 @@ It should be noted that the extra power being produced in the KB3 design stems f
 \label{fig:cp}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_CT.eps}
 \end{center}
@@ -478,7 +478,7 @@ It should be noted that the extra power being produced in the KB3 design stems f
 \label{fig:ct}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_pitch.eps}
 \end{center}
@@ -486,7 +486,7 @@ It should be noted that the extra power being produced in the KB3 design stems f
 \label{fig:pitch}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_rpm.eps}
 \end{center}
@@ -503,7 +503,7 @@ The optimized blades generally have higher airfoil relative thicknesses, particu
 The optimizer can also alter the position of the cross-section relative to the blade axis, referred to as pitch axis aft leading edge. This is shown in Figure \ref{fig:p_le}. This affects the positioning of the spar cap within the cross-section as well as the aerodynamic pitch moment.
 For all blades, the cross-section is moved forward towards the tip but is somewhat less pronounced for the KB3 and KB4 blades. 
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_chord.eps}
 \end{center}
@@ -512,7 +512,7 @@ For all blades, the cross-section is moved forward towards the tip but is somewh
 \end{figure}
 
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_twist.eps}
 \end{center}
@@ -520,7 +520,7 @@ For all blades, the cross-section is moved forward towards the tip but is somewh
 \label{fig:twist}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_rthick.eps}
 \end{center}
@@ -529,7 +529,7 @@ For all blades, the cross-section is moved forward towards the tip but is somewh
 \end{figure}
 
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_ple.eps}
 \end{center}
@@ -537,7 +537,7 @@ For all blades, the cross-section is moved forward towards the tip but is somewh
 \label{fig:p_le}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_prebend.eps}
 \end{center}
@@ -545,7 +545,7 @@ For all blades, the cross-section is moved forward towards the tip but is somewh
 \label{fig:prebend}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_sweep.eps}
 \end{center}
@@ -561,7 +561,7 @@ The two blades without sweep, KB1 and KB3, result in an increased cap width in t
 
 The spar cap width is not afforded design freedom for the KB4 and KB6 swept blades and hence follow the same trend as the reference case, albeit with higher magnitudes. The increased magnitudes are attributed to the greater lengths seen in the two blades compared to the reference, as it is scaled with length. KB6 has a slightly greater blade length than KB4 as seen in Table \ref{tab:overall_summary}. This is reflected in the spar cap width for KB6 being marginally higher than that of KB4 as seen in Figure \ref{fig:capwidth}. Not affording design freedom in these two blades limits the influence of the spar cap width in affecting the structural stiffnesses in the swept region of the blade. In contrast, the KB2 blade has a decreased spar cap width in the backward swept region contributing to reducing the stiffnesses and thus aiding in bend-twist coupling by facilitating greater torsion towards feather. 
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KBcomp_spar_cap_width.eps}
 \end{center}
@@ -571,7 +571,7 @@ The spar cap width is not afforded design freedom for the KB4 and KB6 swept blad
 
 Figures \ref{fig:tipview} and \ref{fig:topview} show the lofted blade shape seen from the tip and top indicating the locations of region division points, spar cap, and shear webs.
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KB1_tipview.eps}
 \end{center}
@@ -579,7 +579,7 @@ Figures \ref{fig:tipview} and \ref{fig:topview} show the lofted blade shape seen
 \label{fig:tipview}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KB1_topview.eps}
 \end{center}
@@ -624,7 +624,7 @@ mass\_con                  &  Blade mass      \\
 \end{table}
 
 %% optimization and cons opt
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KB6_final/KB6_obj_cons_ipopt.eps}
 \end{center}
@@ -632,7 +632,7 @@ mass\_con                  &  Blade mass      \\
 \label{fig:KB6_objf}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[pht]
 \begin{center}
 	\includegraphics[width=.85\linewidth]{figures/KB6_final/KB6_cons_list.eps}
 \end{center}
@@ -911,7 +911,17 @@ Figure \ref{fig:KB6_stiffness} presents the flapwise, edgewise and torsional sti
 \end{figure}
 
 \subsection{Steady-state performance}
+The steady state operational performance and load response are discussed. It is important to note that the results being discussed in this section pertain to the response of the blade design as recorded during the optimization. The calculations during the optimization are performed in the aeroelastic code HAWCStab2, wherein a nonlinear finite element beam model is coupled with an unsteady blade element momentum (BEM) aerodynamic model considering induction from the shed vorticity, dynamic stall and dynamic inflow \cite{hawcstab2}.
 
+The steady state power and thrust of the KB6 rotor is shown in Figure \ref{fig:KB6_power_thrust}. The KB6 rotor generates rated power at a wind speed of 10 m/s whereas the reference rotor produces the same at 11 m/s, as seen in Figure \ref{subfig:KB6_pcurve}. The power produced by KB6 is higher in the variable speed region with the greatest difference of 11.4 kW observed at a wind speed of 9.5 m/s. From Figure \ref{subfig:KB6_thrust} presenting the thrust curve, it is seen that the thrust too is greater in KB6 in the variable speed region. However, the peak thrust produced at a wind speed of 9.5m/s is 0.5\% lower than the reference turbine. The optimal power coefficient for the KB6 rotor is $0.476$ and is held constant in the variable speed region until the wind speed between 8 and 9 m/s where the rated rotor speed of $70$ rpm is attained. This is shown in Figure \ref{subfig:KB6_CP}. Beyond this point and until it attains the rated power at a wind speed of 10 m/s, the power coefficient decreases as a result of decreasing tip-speed ratio with rising wind speed. Whereas the reference rotor has a optimal constant power coefficient of $0.46$ which is maintained until it attains the rated rotor speed of $70$ rpm at a wind speed of 10 m/s. Figure \ref{subfig:KB6_CT} shows the thrust coefficient over the operational wind speed range of the turbine. The thrust coefficient for KB6 is higher than that for the reference rotor, and it decreases with rising wind speed in the variable speed region. This is a result of the blade increasingly twisting towards the feather with rising wind speed due to the bend-twist coupling effect as a consequence of the backward sweep in the blade. Due the backward sweep, a larger flapwise force will generate greater torsional moments resulting in increased torsion towards feather. The decrease in the thrust coefficient is even greater beyond the 8 - 9 m/s wind speed range, during which the KB6 rotor attains rated rotor speed. This decrease is due to the reduction in loading as a result of decreasing tip-speed ratio additionally contributing to the load reduction being offered by the geometric bend-twist coupling. Such passive load alleviation mechanisms allow for a larger rotor that can produce more power for a considerably low increase of the aerodynamic loads over those produced by the reference rotor. Furthermore, the peak loading is similar to that of the reference rotor.  
+
+The steady state load response of the KB6 and reference rotors are shown in Figure \ref{fig:KB6_load_response}. The flapwise blade root bending moment is increased in KB6 compared to the reference rotor, primarily due the 5.5\% increase in the blade length. This can be observed in Figure \ref{subfig:KB6_Mx}. The edgewise blade root bending moment is shown in Figure \ref{subfig:KB6_My}. It is seen to be slightly lower than the reference rotor. Edgewise moments are mainly driven by the mass of the blade and the reductions can be attributed to the 4.65\% lower blade mass of the KB6 rotor than the reference. The torsional moments shown in Figure \ref{subfig:KB6_Mz}, are seen to increase in absolute magnitude, with rising wind speeds in the variable speed region of the KB6 rotor. This is due the backward sweep of the blade that generates additional torsional moment due to the action of the flapwise forces, which increase with rising wind speeds. The negative sign of the torsional moments indicate that the moments are directed in twisting the blade towards the feather. Thus, for rising wind speeds, the increasing flapwise force makes the blade twist increasingly towards the feather. Beyond the point at which the rated rotor speed is attained for the KB6 rotor, the decreasing tip-speed ratio slightly reduces the flapwise forces thus relatively reducing the magnitude of the torsional moment until 10 m/s at which rated power is achieved. Beyond this point the same phenomenon is repeated, but is mainly driven by reduction in the tip-speed ratio caused by pitching of the blades.
+
+The steady state physical response of the structure is shown in Figure \ref{fig:KB6_deflections}. Figure \ref{subfig:KB6_tors_posn} shows the steady state torsional response of the rotor at a wind speed of 9 m/s. The KB6 blade is seen to torsion towards the feather with the absolute magnitude increasing with the normalized span. The increase in torsion corresponds to the increase in the amount of backward sweep along the span, as seen in Figure \ref{subfig:KB6_sweep}. The spanwise blade torsion with increasing wind speeds in the variable speed region is shown in Figure \ref{subfig:KB6_tors_posn_diffwsp}. It is seen that the blade twists increasingly towards the feather for increasing wind speeds, until 85\% blade span. For the last 15\% of the KB6 blade span the blade twists increasingly towards stall with rising wind speeds. %%%SHould I write about the prebend affecting the torsion as it reduces the flapwise force distribution?? But maybe a further analysis is required to support it.
+The flapwise positions of the blade sections are shown in Figure \ref{subfig:KB6_flap_posn} at a wind speed of 9 m/s. The KB6 blade is seen to bend towards the tower with its magnitude increasing along the span until approximately 80\% of the blade length. At this point the blade attains a position closest to the tower. Beyond this point the blade is seen to deflect away from the tower relative to its closest position, until the tip. %\textcolor{red}{This behaviour is attributed to the large gradient in the prebend for the corresponding spanwise location. }
+Figure \ref{subfig:KB6_flap_pson_diffwsp} shows the flapwise positions of the blade for different wind speeds in the variable speed region of the KB6 rotor. The blade increasingly deflects towards the tower with rising wind speeds, due to increasing flapwise bending moments as seen in Figure \ref{subfig:KB6_Mx}. The flapwise bending moment moment is seen to attain its highest value at a wind speed of 9 m/s corresponding to the resulting flapwise blade positions.
+
+The angles of attack along the span for different wind speeds in the variable speed region of the KB6 rotor is seen in Figure \ref{fig:KB6_aoa}. The angles of attack are seen to decrease with rising wind speeds until the wind speed of 8 m/s. The KB6 rotor attains its rotor speed between a wind speed of 8 m/s and 9 m/s, marking the end of the variable speed region. At a wind speed of 9m/s the angles of attack are seen to attain a higher value than the rest of the wind speeds. %%Is the airfoil entering stall? Need Cl to examine that. What is the design angle of attack of the new airfoils? Need Cl/Cd to get region of maximum efficiency.....
 % power and thrust 
 \begin{figure}[tph]
 \begin{subfigure}{0.50\textwidth}
@@ -947,20 +957,20 @@ Figure \ref{fig:KB6_stiffness} presents the flapwise, edgewise and torsional sti
 \begin{subfigure}{0.50\textwidth}
 \includegraphics[width=\linewidth]{figures/KB6_final/KB6_MxBR_HS2.eps}
 \caption{Flapwise blade root bending moment}
-\label{subfig:Mx}
+\label{subfig:KB6_Mx}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
 \includegraphics[width=\linewidth]{figures/KB6_final/KB6_MyBR_HS2.eps}
 \caption{Edgewise blade root bending moment}
-\label{subfig:My}
+\label{subfig:KB6_My}
 \end{subfigure}
 
 \begin{subfigure}{\textwidth}
 \centering
 \includegraphics[width=0.50\linewidth]{figures/KB6_final/KB6_steady_MzBR_HS2.eps}
 \caption{Torsional blade root moment}
-\label{subfig:Mz}
+\label{subfig:KB6_Mz}
 \end{subfigure}
  
 \caption{Steady state load response}
@@ -1000,18 +1010,14 @@ Figure \ref{fig:KB6_stiffness} presents the flapwise, edgewise and torsional sti
 %%Angle of attack
 
 \begin{figure}[tph]
-\begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_AoA_HS2.eps}
-\caption{Angle of attack at 9 m/s}
-\label{subfig:KB6_aoa_9}
-\end{subfigure}
- ~
-\begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_AoA_WSP_HS2.eps}
-\caption{Angle of attack for wind speeds in variable speed region}
-\label{subfig:KB6_aoa_diffwsp}
-\end{subfigure}
-\caption{Steady state blade angle of attack}
+\centering
+\includegraphics[width=0.8\linewidth]{figures/KB6_final/KB6_AoA_WSP_HS2.eps}
+\caption{Steady state angles of attack along the blade span for wind speeds in variable speed region}
 \label{fig:KB6_aoa}
 \end{figure}
 
+\section{Conclusion}
+\label{sec:optimize_conc}
+The reference 100 kW rotor has been optimized using the multi-disciplinary optimization tool HAWTOpt2. Five different optimized blades were obtained through placing varying constraints in the problem formulation. KB1 was optimized as a straight blade with no coupling. KB2 was optimized as a geometrically coupled blade through the introduction of backward sweep. KB3 was optimized as a material coupled blade through altering the fibre layup angles in the spar cap uniax laminates. Based on an analysis of the obtained optimized designs it was decided to select backward sweep as the means to introduce bend-twist coupling. This was influenced by the superior power output and annual energy production of the KB2 swept design over the KB3 material coupled design. Additional constraints on the maximum achievable backward sweep and prebend were placed on the design to facilitate manufacturability.  
+
+The optimized designs showed significant improvements in the annual energy production over the reference turbine. The coupled designs provided a greater improvement than the non-coupled design due to the passive load reduction afforded by bend-twist coupling. This allowed for the optimized blades to be more slender, flexible, longer and at the same time have a lower mass than the reference blade. The optimized rotor further curtailed peak loads by attaining the rated rotor speed at an earlier wind speed than the rated power. Providing design freedom to the tip-speed ratio and in extension to the rotor speed also aided in improving the annual energy production.

@@ -659,6 +659,7 @@ mass\_con                  &  Blade mass      \\
 %\end{figure}
 
 \subsection{Planform}
+The planform of the KB6 swept blade is compared to the reference blade in Figure \ref{fig:KB6_blade_geom} and Figure \ref{fig:KB6_sweep_prebend}. The chord length is seen to have decreased from the reference, as seen in Figure \ref{subfig:KB6_chord}. The reduction is greatest in the mid-span region of the blade. Additionally, the relative thickness of the blade sections have increased from the reference in the mid-span region. The decreased chord and increased relative thickness indicate a much slender blade profile than the reference. The twist angle is seen to increase in Figure \ref{subfig:KB6_twist}. It should be noted that the twist plotted in this figure, follows the right hand thumb rule convention for a z-coordinate axis that starts at the root and ends at the tip. Accordingly, it is regarded negative towards feather and positive towards stall. The twist in the KB6 blade has decreased compared to the reference case and is twisting less towards feather. This is to accommodate an increased tip-speed ratio of operation and the consequences of a slender blade design which has altered the angle of attack for which the airfoils can operate optimally. It is also observed from Figure \ref{subfig:KB6_twist} that difference between the twist angles of KB6 and the reference increase further in the last 20-25\% of the blade. This is due to the additional effect of torsion arising as a consequence of the geometric bend-twist coupling, to reduce the angle of attack by twisting towards feather. As such the pre-twist attains less negative values to compensate for this effect and to allow the airfoils in the affected region to operate optimally.
 
 
 % planform figures 
@@ -723,92 +724,146 @@ mass\_con                  &  Blade mass      \\
 \end{figure}
 
 \subsection{Structure}
+\label{subsec:KB6_structure}
 
+\subsubsection*{Composite layup}
+The material layup in the various regions of the blade sections along with the corresponding laminate thicknesses are shown in Figures \ref{fig:KB6_mat_r01} to \ref{fig:KB6_mat_r07}. The two outer triax layers remain unchanged while the rest of the internal layers are afforded design freedom during the optimization and vary according to the solution. 
+
+Figure \ref{fig:KB6_mat_r01} shows the material information in the trailing edge reinforcement of the blade. Referring to the blade cross-section shown in Figure \ref{fig:cross_section_def}, this region is between the points DP00 and DP02 on the pressure side and between DP15 and DP17 on the suction side. It is seen that compared to the reference the KB6 blade has a greater thickness in this region especially near the root. This has been carried out by adding more uniax material.
+
+Figure \ref{fig:KB6_mat_r02} depicts the material layup in the main panel of the blade which is situated between the spar cap and trailing edge reinforcement. In Figure \ref{fig:cross_section_def} showing the cross-section information, this region lies between the points DP02 and DP04 on the pressure side and between DP13 and DP15 on the suction side. In this region the laminate thicknesses are mostly similar to the reference blade. Except near the root it is less thicker. This has been done by reducing the uniax material. Similarly the thickness is greater from 20\% to 40\% blade length. This has been facilitated by increasing the triax material in the layup. 
+
+Figure \ref{fig:KB6_mat_r04} presents the material layup in the spar cap of the blade. From Figure \ref{fig:cross_section_def} it is seen that this region lies between the points DP04 and DP07 on the pressure side and between DP10 and DP13 on the suction side. The thickness of the laminate from 40\% span to 90\% span has been reduced considerably, by a factor of two on average. At the same time, the thickness between the root and around 30\% span has increased compared to the reference. This has been mainly done by altering the uniax material. Two thin layers of triax have also been added.
+
+Figure \ref{fig:KB6_mat_r06} shows the material distribution and laminate thickness in the leading region of the blade situated between the leading edge and the spar cap. On referring to Figure \ref{fig:cross_section_def} it is seen that this region lies between the points DP07 and DP08 on the pressure side and between the points DP09 and DP10 on the suction side of the blade section. The laminate thickness has been reduced in the KB6 bade in the near root region, while it has been slightly increased from 20\% to 40\% span. The reduction in the laminate thickness is due to the removal of the uniax layer near the root. Whereas a layer of triax has been added throughout the early span and is responsible for the increase in thickness from 20\% to 40\%span.
+
+Figure \ref{fig:KB6_mat_r07} shows the material information in the leading edge reinforcement of the blade. From the cross-section shown in Figure \ref{fig:cross_section_def} it is seen that this region lies between the division points DP08 and DP09 and includes the leading edge. The laminate thickness has increased from the near root region until 50\% span. This increase is primarily due the addition of two triax layers. The thickness has also increased from around 70\% span until the tip. The increase here is attributed to the addition of uniax material in the layup. 
+
+The material in the shear webs are not provided design freedom during the optimization and remain unchanged in thickness and material composition.
+
+\subsubsection*{Blade stiffnesses}
+Figure \ref{fig:KB6_stiffness} presents the flapwise, edgewise and torsional stiffnesses of the KB6 blade compared to the reference over a normalized span. All three stiffnesses are seen to have decreased for majority of the blade span except at the root and tip, which show a slight increase. This is a result of the reduction in the chord length in the KB6 blade compared to the reference as seen in Figure \ref{subfig:KB6_chord}. Cross-sectional stiffnesses in a thin composite laminate section scale to the cube of the local chord and scale directly with the laminate thickness. This dependence can be derived by applying classical laminate theory to a thin cross-section. The reader is directed to the ECN report by Kooijman \cite{kooijman1996bending} for the actual derivation. From the previous section it is seen that the laminate thicknesses too have been reduced considerably in the spar cap region, which is the structural entity that contributes the most towards cross-sectional stiffness. 
 
 
 %%Material thickness and layup
 %region 1
 \begin{figure}[tph]
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_r01_thickness.eps}
-\caption{Laminate thickness comparison with reference}
-\label{subfig:KB6_thick_r01}
+\centering
+\includegraphics[width=\linewidth]{figures/KB6_final/baseline_laminate_layers_r01.eps}
+\caption{Laminate layup of reference blade}
+\label{subfig:baseline_layers_r01}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
 \includegraphics[width=\linewidth]{figures/KB6_final/KB6_laminate_layers_r01.eps}
-\caption{Laminate layup}
+\caption{Laminate layup of KB6 blade}
 \label{subfig:KB6_layers_r01}
 \end{subfigure}
-\caption{ Material in the trailing edge reinforcement of the KB6 blade.}
+
+\begin{subfigure}{\textwidth}
+\centering
+\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB6_r01_thickness.eps}
+\caption{Laminate thickness comparison of KB6 with reference}
+\label{subfig:KB6_thick_r01}
+\end{subfigure}
+\caption{ Material in the trailing edge reinforcement}
 \label{fig:KB6_mat_r01}
 \end{figure}
 
 %region 2
 \begin{figure}[tph]
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_r02_thickness.eps}
-\caption{Laminate thickness comparison with reference}
-\label{subfig:KB6_thick_r02}
+\includegraphics[width=\linewidth]{figures/KB6_final/baseline_laminate_layers_r02.eps}
+\caption{Laminate layup of reference blade}
+\label{subfig:baseline_layers_r02}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
 \includegraphics[width=\linewidth]{figures/KB6_final/KB6_laminate_layers_r02.eps}
-\caption{Laminate layup}
+\caption{Laminate layup of KB6 blade}
 \label{subfig:KB6_layers_r02}
 \end{subfigure}
-\caption{ Material in the main panel (immediately behind the spar cap) of the KB6 blade.}
+
+\begin{subfigure}{\textwidth}
+\centering
+\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB6_r02_thickness.eps}
+\caption{Laminate thickness comparison of KB6 with reference}
+\label{subfig:KB6_thick_r02}
+\end{subfigure}
+\caption{ Material in the main panel (immediately behind the spar cap)}
 \label{fig:KB6_mat_r02}
 \end{figure}
 
 %region 4
 \begin{figure}[tph]
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_r04_thickness.eps}
-\caption{Laminate thickness comparison with reference}
-\label{subfig:KB6_thick_r04}
+\includegraphics[width=\linewidth]{figures/KB6_final/baseline_laminate_layers_r04.eps}
+\caption{Laminate layup of reference blade}
+\label{subfig:baseline_layers_r04}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
 \includegraphics[width=\linewidth]{figures/KB6_final/KB6_laminate_layers_r04.eps}
-\caption{Laminate layup}
+\caption{Laminate layup of KB6 blade}
 \label{subfig:KB6_layers_r04}
 \end{subfigure}
-\caption{ Material in the spar cap of the KB6 blade.}
+
+\begin{subfigure}{\textwidth}
+\centering
+\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB6_r04_thickness.eps}
+\caption{Laminate thickness comparison with reference}
+\label{subfig:KB6_thick_r04}
+\end{subfigure}
+\caption{ Material in the spar cap}
 \label{fig:KB6_mat_r04}
 \end{figure}
 
 %region 6
 \begin{figure}[tph]
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_r06_thickness.eps}
-\caption{Laminate thickness comparison with reference}
-\label{subfig:KB6_thick_r06}
+\includegraphics[width=\linewidth]{figures/KB6_final/baseline_laminate_layers_r06.eps}
+\caption{Laminate layup of reference blade}
+\label{subfig:baseline_layers_r06}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
 \includegraphics[width=\linewidth]{figures/KB6_final/KB6_laminate_layers_r06.eps}
-\caption{Laminate layup}
+\caption{Laminate layup of KB6 blade}
 \label{subfig:KB6_layers_r06}
 \end{subfigure}
-\caption{ Material in the leading region (immediately in front of the spar cap) of the KB6 blade.}
+
+\begin{subfigure}{\textwidth}
+\centering
+\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB6_r06_thickness.eps}
+\caption{Laminate thickness comparison of KB6 with reference}
+\label{subfig:KB6_thick_r06}
+\end{subfigure}
+\caption{ Material in the leading region (immediately in front of the spar cap)}
 \label{fig:KB6_mat_r06}
 \end{figure}
 
 %region 7
 \begin{figure}[tph]
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_r07_thickness.eps}
-\caption{Laminate thickness comparison with reference}
-\label{subfig:KB6_thick_r07}
+\includegraphics[width=\linewidth]{figures/KB6_final/baseline_laminate_layers_r07.eps}
+\caption{Laminate layup of reference blade}
+\label{subfig:baseline_layers_r07}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
 \includegraphics[width=\linewidth]{figures/KB6_final/KB6_laminate_layers_r07.eps}
-\caption{Laminate layup}
+\caption{Laminate layup of KB6 blade}
 \label{subfig:KB6_layers_r07}
 \end{subfigure}
-\caption{ Material in the leading edge reinforcement of the KB6 blade.}
+
+\begin{subfigure}{\textwidth}
+\centering
+\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB6_r07_thickness.eps}
+\caption{Laminate thickness comparison with reference}
+\label{subfig:KB6_thick_r07}
+\end{subfigure}
+\caption{ Material in the leading edge reinforcement}
 \label{fig:KB6_mat_r07}
 \end{figure}
 

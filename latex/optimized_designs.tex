@@ -262,7 +262,7 @@ In this section five design studies are presented:
 	\item \textbf{KB2}: Optimized swept blade. This blade is optimized without constraints on blade torsion and given design freedom to introduce sweep, but not material couplings.
 	\item \textbf{KB3}: Optimized material coupled blade. This blade is optimized without constraints on blade torsion and given design freedom to introduce material couplings in the spar cap, but not sweep.
 	\item \textbf{KB4}: Optimized swept blade with fixed rotor speed schedule. This blade is optimized without constraints on blade torsion and given design freedom to introduce sweep, but not material couplings. Compared to KB2, additional constraints have been placed on the sweep and prebend. The sweep is constrained to achieve only backward sweep with a maximum limit on its value not exceeding 5\% of the reference blade length. The sweep is only allowed from 60\% blade span and onwards. The prebend too has been constrained to only bend away from the tower with a maximum limit on its value not exceeding 10\% of the reference blade length. An outer layer of triax is added, which is maintained at a fixed thickness through the optimization. The spar cap width is disallowed design freedom. These design decisions have been taken to address manufacturing and structural concerns. Importantly, this design has a fixed rotor speed schedule calculated based on the design tip-speed ratio of the reference blade. 
-	\item \textbf{KB6}: Optimized swept blade. This blade is optimized without constraints on blade torsion and given design freedom to introduce sweep, but not material couplings. It incorporates the same design decisions as applied to KB4. However, unlike KB4 the rotor speed schedule is allowed design freedom to vary through the optimization. 
+	\item \textbf{KB5}: Optimized swept blade. This blade is optimized without constraints on blade torsion and given design freedom to introduce sweep, but not material couplings. It incorporates the same design decisions as applied to KB4. However, unlike KB4 the rotor speed schedule is allowed design freedom to vary through the optimization. 
 \end{itemize}
 
 All five designs are made with identical optimization problem definitions, that is, same objective and constraints, as well as identical design variables, except for the above mentioned differences. The problem definition is summarized below.
@@ -305,7 +305,7 @@ Chord					&	6	&	-	\\
 Twist					&	5	&	Root twist fixed	\\
 Relative thickness		&	4	& 	Root and tip relative thickness fixed	\\
 Out of plane prebend		&	3	& 	- \\
-In-plane sweep			&	4	&	Active for KB2, KB4 and KB6 design \\
+In-plane sweep			&	4	&	Active for KB2, KB4 and KB5 design \\
 Pitch axis aft LE		&	4	& 	- \\
 Blade length				&	1	&	- \\
 Tip-speed ratio			&	1	&	Inactive in KB4 to ensure fixed RPM schedule. \\
@@ -314,7 +314,7 @@ Spar cap uniax			&	4	&	Symmetric pressure/suction side	\\
 Leading edge uniax		&	4	&	Symmetric pressure/suction side	\\
 Leading panels triax		&	4	&	Symmetric pressure/suction side	\\
 Trailing panels triax	&	4	&	Symmetric pressure/suction side	\\
-Spar cap width			& 	2	&	Linearly tapered spar cap. Inactive in KB4 and KB6. \\
+Spar cap width			& 	2	&	Linearly tapered spar cap. Inactive in KB4 and KB5. \\
 Suction side spar cap fibre angle	&	4	&	Only active for KB3 design	\\
 Pressure side spar cap fibre angle	&	4	&	Only active for KB3 design	\\
 \hline
@@ -322,7 +322,7 @@ Pressure side spar cap fibre angle	&	4	&	Only active for KB3 design	\\
 \textbf{KB2 Total}		&	48	&	\\
 \textbf{KB3 Total}		&	52	&	\\
 \textbf{KB4 Total}		&	48	&	\\
-\textbf{KB6 Total}		&	49	&	\\
+\textbf{KB5 Total}		&	49	&	\\
 \hline
 \end{tabular}
 \label{tab:dv_summary}
@@ -339,9 +339,9 @@ Pressure side spar cap fibre angle	&	4	&	Only active for KB3 design	\\
 \hline
 max(chord)							&	$< 0.9$	m		&	Maximum chord limited for transport.	\\
 max(prebend)							&$<0.9$ m (for KB1,KB2, KB3) 		&	Maximum prebend limited for transport.	\\
-                                   &   $< 1$ m (for KB4 and KB6)	  &                                                     \\
+                                   &   $< 1$ m (for KB4 and KB5)	  &                                                     \\
 max(sweep)							& $< 0.9$ m (for KB2)			& Maximum sweep limited for ease in manufacturing.	\\
-                                   &   $< 0.5$ m (for KB4 and KB6)  &                                                     \\
+                                   &   $< 0.5$ m (for KB4 and KB5)  &                                                     \\
 min(relative thickness)				&	$> 0.18$			&	Fixed airfoil series.	\\
 min(material thickness)				&	$> 0.0 $ m		&	Allow maximum freedom to reduce thickness - although unrealistic.	\\
 max(Blade deflection)				&	$< 1.0$ m		&  	Allow blade tip to deflect 1 m.\\
@@ -367,14 +367,14 @@ The overall properties of the five optimized blades and the reference design are
 Both KB2 and KB3 produce higher AEP than the non-coupled KB1 blade, and we also see that swept KB2 blade performs better than the material coupled design KB3. The increased performance of KB2 is also reflected in the slightly longer blade length of 11.35 m, compared to 11.064 and 11.231 of KB1 and KB3.
 
 
-As mentioned at the beginning of Section \ref{sec:design_studies}, the KB4 and KB6 designs have additional constraints placed on the magnitude of sweep and prebend, along with reduced freedom provided to the optimizer in changing the material thicknesses in the laminae. These factors influence the design resulting in lower AEP compared to the non-coupled blade KB1. For instance, a lower limit on backward sweep prevents additional load reduction benefits through the phenomenon of geometric bend-twist coupling. A lower load reduction potential in turn limits the achievable blade length, which is a major driver of aerodynamic loads. This is seen in the lower blade length values obtained by KB4 and KB6 compared to the three remaining designs. Additionally, KB4 follows a fixed rotor speed schedule based on the tip speed ratio of the reference blade. As a result the KB4, rotor operates at the same rotor speeds as the reference rotor for given wind speeds. This limits the achievable AEP increase as the blade fails to operate at its optimal aerodynamic design points. The influence of the design freedom assigned to rotor speed is seen in the superior AEP of KB6 over that of KB4. This is achieved inspite of only a slight increase of blade length in KB6, pointing to the influential role of rotor speed to facilitate optimal operation of the rotor in the variable speed region.
+As mentioned at the beginning of Section \ref{sec:design_studies}, the KB4 and KB5 designs have additional constraints placed on the magnitude of sweep and prebend, along with reduced freedom provided to the optimizer in changing the material thicknesses in the laminae. These factors influence the design resulting in lower AEP compared to the non-coupled blade KB1. For instance, a lower limit on backward sweep prevents additional load reduction benefits through the phenomenon of geometric bend-twist coupling. A lower load reduction potential in turn limits the achievable blade length, which is a major driver of aerodynamic loads. This is seen in the lower blade length values obtained by KB4 and KB5 compared to the three remaining designs. Additionally, KB4 follows a fixed rotor speed schedule based on the tip speed ratio of the reference blade. As a result the KB4, rotor operates at the same rotor speeds as the reference rotor for given wind speeds. This limits the achievable AEP increase as the blade fails to operate at its optimal aerodynamic design points. The influence of the design freedom assigned to rotor speed is seen in the superior AEP of KB5 over that of KB4. This is achieved inspite of only a slight increase of blade length in KB5, pointing to the influential role of rotor speed to facilitate optimal operation of the rotor in the variable speed region.
 
-All blades operate at high tip speed ratio, compared to the starting point of the design optimizations of 7.5. Since the blade mass was a constraint in the optimizations, all five blades have similar mass with KB6 being the heaviest.
+All blades operate at high tip speed ratio, compared to the starting point of the design optimizations of 7.5. Since the blade mass was a constraint in the optimizations, all five blades have similar mass with KB5 being the heaviest.
 
 %\begin{table}
 %\begin{tabular}{l|l|l|l|l|l|l}
 %\hline
-% Quantity              & Reference & KB1 & KB2     & KB3     & KB4    & KB6          \\
+% Quantity              & Reference & KB1 & KB2     & KB3     & KB4    & KB5          \\
 %\hline
 % AEP [MWhr] (A=6, k=2) & 212.38 & 243.82 & 252.18  & 249.08  & 224.67 & 236.77  \\
 % Blade length [m]      & 10.00  & 11.06  & 11.41   & 11.22   & 10.48  & 10.55  \\
@@ -390,7 +390,7 @@ All blades operate at high tip speed ratio, compared to the starting point of th
 %\begin{table}
 %\begin{tabular}{l|l|l|l|l|l|l}
 %\hline
-% Quantity             &  KB1 & KB2     & KB3     & KB4    & KB6          \\
+% Quantity             &  KB1 & KB2     & KB3     & KB4    & KB5          \\
 %\hline
 % AEP (A=6, k=2)  & +14.80\%  & +18.74\%  & +17.28\%   & +5.79\%   &  +11.48\% \\
 % Blade length    &  +10.6\% & +14.1\%   & +12.2\%   &  +4.8\%  & +5.5\%  \\
@@ -410,7 +410,7 @@ All blades operate at high tip speed ratio, compared to the starting point of th
 \resizebox{\linewidth}{!}{
 \begin{tabular}{|l|l||l|l||l|l||l|l||l|l||l|l|}
 \hline
-\multirow{2}{*}{Quantity}                         & Reference & \multicolumn{2}{l||}{KB1} & \multicolumn{2}{l||}{KB2} & \multicolumn{2}{l||}{KB3} & \multicolumn{2}{l||}{KB4} & \multicolumn{2}{l|}{KB6} \\ \cline{2-12}
+\multirow{2}{*}{Quantity}                         & Reference & \multicolumn{2}{l||}{KB1} & \multicolumn{2}{l||}{KB2} & \multicolumn{2}{l||}{KB3} & \multicolumn{2}{l||}{KB4} & \multicolumn{2}{l|}{KB5} \\ \cline{2-12}
                  & Value     & Value      & Change     & Value      & Change     & Value      & Change     & Value      & Change     & Value      & Change     \\\hline
 AEP{[}MWhr{]} (A=6, k=2) & 212.38    & 243.82     &  +14.80\%          & 252.18     &   +18.74\%         & 249.08     &   +17.28\%         & 224.67     &       +5.79\%     & 236.77     &    +11.48\%        \\ 
 Blade length {[}m{]}     & 10        & 11.06      &   +10.6\%         & 11.41      &    +14.1\%         & 11.22      &   +12.2\%         & 10.48      &        +4.8\%     & 10.55      &  +5.5\%          \\ 
@@ -419,11 +419,11 @@ TSR {[}-{]}              & 7.50      & 10.08      &    +34.4\%        & 10.62   
 \end{tabular}}
 \end{table}
 The differences in the AEP of the five optimized designs and the reference rotor is represented visually in Figure \ref{fig:KB_AEP}. The AEPs have been calculated for a Weibull wind climate with average wind speed of 6 m/s.
-Figures \ref{fig:power} to \ref{fig:rpm} show the rotor steady state performance as function of wind speed. The mechanical power generated by the optimized designs is shown in Figure \ref{fig:power}. It is seen that the only KB4 and the reference blade achieve rated power at a wind speed of 11 m/s whereas the rest of the designs produce rated power at a wind speed of 10 m/s. This due to a shorter variable speed region in KB1, KB2, KB3 and KB6 as a result of the rotor speed being granted design freedom during the optimization. In general, KB4 and reference produce similar power for a given wind speed and is lower than the rest of the designs. This is due to the higher rotor speeds adopted in these designs than compared to KB4, which follows the same rotor speed schedule as the reference. A higher optimal rotor speed results in a higher optimal tip-speed ratio. The rotor speed curves can be seen in Figure \ref{fig:rpm}. All the designs except for KB4 and the reference attain the rated rotor speed of 70 rpm between 8 and 9 m/s, whereas KB4 and the reference rotor attain the maximum rotor speed between a wind speed of 10 and 11 m/s. 
+Figures \ref{fig:power} to \ref{fig:rpm} show the rotor steady state performance as function of wind speed. The mechanical power generated by the optimized designs is shown in Figure \ref{fig:power}. It is seen that the only KB4 and the reference blade achieve rated power at a wind speed of 11 m/s whereas the rest of the designs produce rated power at a wind speed of 10 m/s. This due to a shorter variable speed region in KB1, KB2, KB3 and KB5 as a result of the rotor speed being granted design freedom during the optimization. In general, KB4 and reference produce similar power for a given wind speed and is lower than the rest of the designs. This is due to the higher rotor speeds adopted in these designs than compared to KB4, which follows the same rotor speed schedule as the reference. A higher optimal rotor speed results in a higher optimal tip-speed ratio. The rotor speed curves can be seen in Figure \ref{fig:rpm}. All the designs except for KB4 and the reference attain the rated rotor speed of 70 rpm between 8 and 9 m/s, whereas KB4 and the reference rotor attain the maximum rotor speed between a wind speed of 10 and 11 m/s. 
 
-The power coefficient curves shown in Figure \ref{fig:cp} are seen to decrease in the bend-twist coupled designs with increasing loading due to increase in wind speeds. This is especially true in the KB2 swept blade, where the high magnitude of sweep causes a high value of torsion towards feather decreasing the angle of attack from the design point resulting in a decreased lift coefficient and hence a reduced power coefficient. Due to additional constraints on the maximum attainable sweep placed in the KB6 swept blade design, the decrease in the effective angle of attack caused by increasing magnitudes of torsion with rising wind speeds is not large enough to cause the blade sections to operate outside the optimal aerodynamic region. Thus, the power coefficient remains constant until the rated rotor speed is achieved, beyond which a decrease in the tip-speed ratio causes the observed decrease in the power coefficient. The same trend in the power coefficient is also observed in the KB1 non-coupled blade where there is no bend-twist coupling phenomenon affecting the performance. However, the bend-twist coupled blades show a reduction in the thrust coefficient with increasing wind speeds due to the corresponding rise in magnitudes of torsion towards feather. This can be observed in the thrust coefficient curves shown in Figure \ref{fig:ct}. It is noted that the rate of decrease in the power coefficient of the coupled designs is lower than the corresponding rates of decrease in the thrust coefficient, highlighting the effectiveness of bend-twist coupling towards feather as a load reduction method. Beyond the attainment of the rated rotor speed a decrease in thrust coefficient is also observed in the non-coupled KB1 blade along with the coupled designs. The high tip speed ratio (TSR) operation causes the constant TSR region to end between 8 and 9 m/s, as they attain the rated rotor speed. Beyond this point the decreasing TSR with rising wind speed results in a reduction in $C_T$, which has a beneficial effect on also tip deflection resulting in an unloaded blade tip region. This is a common feature in all the optimized blades apart from KB4, where the decrease in the thrust coefficient is primarily due to bend-twist coupling.         
+The power coefficient curves shown in Figure \ref{fig:cp} are seen to decrease in the bend-twist coupled designs with increasing loading due to increase in wind speeds. This is especially true in the KB2 swept blade, where the high magnitude of sweep causes a high value of torsion towards feather decreasing the angle of attack from the design point resulting in a decreased lift coefficient and hence a reduced power coefficient. Due to additional constraints on the maximum attainable sweep placed in the KB5 swept blade design, the decrease in the effective angle of attack caused by increasing magnitudes of torsion with rising wind speeds is not large enough to cause the blade sections to operate outside the optimal aerodynamic region. Thus, the power coefficient remains constant until the rated rotor speed is achieved, beyond which a decrease in the tip-speed ratio causes the observed decrease in the power coefficient. The same trend in the power coefficient is also observed in the KB1 non-coupled blade where there is no bend-twist coupling phenomenon affecting the performance. However, the bend-twist coupled blades show a reduction in the thrust coefficient with increasing wind speeds due to the corresponding rise in magnitudes of torsion towards feather. This can be observed in the thrust coefficient curves shown in Figure \ref{fig:ct}. It is noted that the rate of decrease in the power coefficient of the coupled designs is lower than the corresponding rates of decrease in the thrust coefficient, highlighting the effectiveness of bend-twist coupling towards feather as a load reduction method. Beyond the attainment of the rated rotor speed a decrease in thrust coefficient is also observed in the non-coupled KB1 blade along with the coupled designs. The high tip speed ratio (TSR) operation causes the constant TSR region to end between 8 and 9 m/s, as they attain the rated rotor speed. Beyond this point the decreasing TSR with rising wind speed results in a reduction in $C_T$, which has a beneficial effect on also tip deflection resulting in an unloaded blade tip region. This is a common feature in all the optimized blades apart from KB4, where the decrease in the thrust coefficient is primarily due to bend-twist coupling.         
 
-The thrust curves of the five designs are shown in Figure \ref{fig:thrust}. Here too the designs operating at higher rotor speeds and corresponding high tip-speed ratios have a greater magnitude of thrust than KB4 and reference blades for the same wind speeds. They attain peak thrust corresponding to maximum rotor speed at a wind speed between 8 and 9 m/s, lower than that of KB4. Furthermore, the peak thrusts for the swept blade designs of KB2, KB4 and KB6 are seen to not exceed the peak thrust in the reference case. The peak thrust in KB1 and KB3 are marginally higher than the reference case but within the acceptable deviation of 7\%.
+The thrust curves of the five designs are shown in Figure \ref{fig:thrust}. Here too the designs operating at higher rotor speeds and corresponding high tip-speed ratios have a greater magnitude of thrust than KB4 and reference blades for the same wind speeds. They attain peak thrust corresponding to maximum rotor speed at a wind speed between 8 and 9 m/s, lower than that of KB4. Furthermore, the peak thrusts for the swept blade designs of KB2, KB4 and KB5 are seen to not exceed the peak thrust in the reference case. The peak thrust in KB1 and KB3 are marginally higher than the reference case but within the acceptable deviation of 7\%.
 
 Finally, the pitch curve of the optimized designs is shown in Figure \ref{fig:pitch}. The blade is not pitched until it reaches the rated rotor speed, beyond which the blades are pitched to curtail loads and power.
 
@@ -560,7 +560,7 @@ The overall structural topology is the same for all five blades, shown in Figure
 As summarized in the optimization setup, Table \ref{tab:dv_summary}, the spar cap width was allowed to change linearly from root to tip for KB1, KB2 and KB3 optimizations. Figure \ref{fig:capwidth} shows the resulting spar cap widths for the five blade designs compared to the reference design.
 The two blades without sweep, KB1 and KB3, result in an increased cap width in the blade root, whereas the swept design of KB2 ends up with a more slender spar cap. Changing cap width did, however, not change the distance between the two main shear webs, see Figure \ref{fig:cross_section_def} for a schematic of the cross-section parametrization.
 
-The spar cap width is not afforded design freedom for the KB4 and KB6 swept blades and hence follow the same trend as the reference case, albeit with higher magnitudes. The increased magnitudes are attributed to the greater lengths seen in the two blades compared to the reference, as it is scaled with length. KB6 has a slightly greater blade length than KB4 as seen in Table \ref{tab:overall_summary}. This is reflected in the spar cap width for KB6 being marginally higher than that of KB4 as seen in Figure \ref{fig:capwidth}. Not affording design freedom in these two blades limits the influence of the spar cap width in affecting the structural stiffnesses in the swept region of the blade. In contrast, the KB2 blade has a decreased spar cap width in the backward swept region contributing to reducing the stiffnesses and thus aiding in bend-twist coupling by facilitating greater torsion towards feather. 
+The spar cap width is not afforded design freedom for the KB4 and KB5 swept blades and hence follow the same trend as the reference case, albeit with higher magnitudes. The increased magnitudes are attributed to the greater lengths seen in the two blades compared to the reference, as it is scaled with length. KB5 has a slightly greater blade length than KB4 as seen in Table \ref{tab:overall_summary}. This is reflected in the spar cap width for KB5 being marginally higher than that of KB4 as seen in Figure \ref{fig:capwidth}. Not affording design freedom in these two blades limits the influence of the spar cap width in affecting the structural stiffnesses in the swept region of the blade. In contrast, the KB2 blade has a decreased spar cap width in the backward swept region contributing to reducing the stiffnesses and thus aiding in bend-twist coupling by facilitating greater torsion towards feather. 
 
 \begin{figure}[pht]
 \begin{center}
@@ -588,20 +588,20 @@ Figures \ref{fig:tipview} and \ref{fig:topview} show the lofted blade shape seen
 \label{fig:topview}
 \end{figure}
 
-\section{Selected blade design - KB6 swept blade}
+\section{Selected blade design - KB5 swept blade}
 \label{sec:final_design}
-This section focuses on the evaluation of the selected optimized design that is the KB6 swept blade. Based on the results of the initial optimizations performed in KB1, KB2 and KB3 it was decided to select geometric sweep as the only source of bend-twist coupling. Even though the two coupled designs namely KB2 and KB3, provide similar steady state performance the AEP and power produced by the swept blade design in KB2 is superior to that of the material coupled design in KB3. This can be seen from Figure \ref{fig:KB_AEP} and Figure \ref{fig:powerratio}. Hence, a swept design was selected for the final blade. Furthermore, in order to facilitate ease of manufacturing of the blades only backward sweep is allowed in the design with a maximum value limited to almost half the value of that chosen for the KB2 swept blade design. Additionally, an extra layer of triax material is added throughout the blade that is not allowed any design freedom. These restrictions limit the extent to which the optimization could leverage the load reductions caused by the geometric coupling to increase the blade length and hence produce greater AEP than possible with the current constraints in place. Thus, as a result of the additional constraints the optimized KB6 design produces less power than the KB2 design.
+This section focuses on the evaluation of the selected optimized design that is the KB5 swept blade. Based on the results of the initial optimizations performed in KB1, KB2 and KB3 it was decided to select geometric sweep as the only source of bend-twist coupling. Even though the two coupled designs namely KB2 and KB3, provide similar steady state performance the AEP and power produced by the swept blade design in KB2 is superior to that of the material coupled design in KB3. This can be seen from Figure \ref{fig:KB_AEP} and Figure \ref{fig:powerratio}. Hence, a swept design was selected for the final blade. Furthermore, in order to facilitate ease of manufacturing of the blades only backward sweep is allowed in the design with a maximum value limited to almost half the value of that chosen for the KB2 swept blade design. Additionally, an extra layer of triax material is added throughout the blade that is not allowed any design freedom. These restrictions limit the extent to which the optimization could leverage the load reductions caused by the geometric coupling to increase the blade length and hence produce greater AEP than possible with the current constraints in place. Thus, as a result of the additional constraints the optimized KB5 design produces less power than the KB2 design.
 
 \subsection{Multidisciplinary optimization}
 \label{subsec:MDO}
-The value of the objective function for every iteration of the optimizer is shown in Figure \ref{fig:KB6_objf}. The objective function has been defined in Equation \ref{eqn:objective} and it starts with a value of $-1$ which represents the reference blade. As the optimizer evaluates the design space and leverages the design variables, objective and constrains the changes in the design with each iteration alters the value of the objective function. The aim is to minimize the objective function that is to obtain the highest attainable magnitude of the objective function which corresponds to the maximization of the AEP. It is seen in Figure \ref{fig:KB6_objf} that the objective function represented in blue, decreases with increasing optimizer iterations indicating a successful progression of the problem. As the optimizer solves for the optimal design it inadvertently attains designs from the possible design space which exhibit violations of the constraints imposed on the problem. The constraint violations are shown in red on a log scale. The green dots on the objective function curve represent the attained designs which adhere to the bounds set by the various constraints. The chosen design is the minimum value of the objective function for which no constraint violation has been recorded.
+The value of the objective function for every iteration of the optimizer is shown in Figure \ref{fig:KB5_objf}. The objective function has been defined in Equation \ref{eqn:objective} and it starts with a value of $-1$ which represents the reference blade. As the optimizer evaluates the design space and leverages the design variables, objective and constrains the changes in the design with each iteration alters the value of the objective function. The aim is to minimize the objective function that is to obtain the highest attainable magnitude of the objective function which corresponds to the maximization of the AEP. It is seen in Figure \ref{fig:KB5_objf} that the objective function represented in blue, decreases with increasing optimizer iterations indicating a successful progression of the problem. As the optimizer solves for the optimal design it inadvertently attains designs from the possible design space which exhibit violations of the constraints imposed on the problem. The constraint violations are shown in red on a log scale. The green dots on the objective function curve represent the attained designs which adhere to the bounds set by the various constraints. The chosen design is the minimum value of the objective function for which no constraint violation has been recorded.
 
-The constraints imposed on the problem have been introduced in Table \ref{tab:con_summary}. Figure \ref{fig:KB6_cons} represents the absolute values of the constraints normalised by their corresponding maximum limits. These constraints have been recorded at the chosen optimal solution of the design. The constraint that has a value which is more than 90\% of its maximum limit is considered to be active and is responsible for affecting the obtained solution. The active constraints from Figure \ref{fig:KB6_cons} are shown in Table \ref{tab:KB6_cons}.
+The constraints imposed on the problem have been introduced in Table \ref{tab:con_summary}. Figure \ref{fig:KB5_cons} represents the absolute values of the constraints normalised by their corresponding maximum limits. These constraints have been recorded at the chosen optimal solution of the design. The constraint that has a value which is more than 90\% of its maximum limit is considered to be active and is responsible for affecting the obtained solution. The active constraints from Figure \ref{fig:KB5_cons} are shown in Table \ref{tab:KB5_cons}.
 
 \begin{table}[!ht]
 \centering
-\caption{Active constraints for KB6}
-\label{tab:KB6_cons}
+\caption{Active constraints for KB5}
+\label{tab:KB5_cons}
 \begin{tabular}{|l|l|}
 \hline
  Quantity [-]             & Description           \\
@@ -627,18 +627,18 @@ mass\_con                  &  Blade mass      \\
 %% optimization and cons opt
 \begin{figure}[pht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB6_final/KB6_obj_cons_ipopt.eps}
+	\includegraphics[width=.85\linewidth]{figures/KB6_final/KB5_obj_cons_ipopt.eps}
 \end{center}
 \caption{Evolution of objective function and constraint violation for increasing iterations of the optimizer.}
-\label{fig:KB6_objf}
+\label{fig:KB5_objf}
 \end{figure}
 
 \begin{figure}[pht]
 \begin{center}
-	\includegraphics[width=.85\linewidth]{figures/KB6_final/KB6_cons_list.eps}
+	\includegraphics[width=.85\linewidth]{figures/KB6_final/KB5_cons_list.eps}
 \end{center}
 \caption{Normalised values of constraints depicting the main design drivers.}
-\label{fig:KB6_cons}
+\label{fig:KB5_cons}
 \end{figure}
 
 
@@ -660,90 +660,90 @@ mass\_con                  &  Blade mass      \\
 %\end{figure}
 
 \subsection{Planform}
-The planform of the KB6 swept blade is compared to the reference blade in Figure \ref{fig:KB6_blade_geom} and Figure \ref{fig:KB6_sweep_prebend}. The chord length is seen to have decreased from the reference, as seen in Figure \ref{subfig:KB6_chord}. The reduction is greatest in the mid-span region of the blade. Additionally, the relative thickness of the blade sections have increased from the reference in the mid-span region. The decreased chord and increased relative thickness indicate a much slender blade profile than the reference. The twist angle is seen to increase in Figure \ref{subfig:KB6_twist}. It should be noted that the twist plotted in this figure, follows the right hand thumb rule convention for a z-coordinate axis that starts at the root and ends at the tip. Accordingly, it is regarded negative towards feather and positive towards stall. The twist in the KB6 blade has decreased compared to the reference case and is twisting less towards feather. This is to accommodate an increased tip-speed ratio of operation and the consequences of a slender blade design which has altered the angle of attack for which the airfoils can operate optimally. It is also observed from Figure \ref{subfig:KB6_twist} that difference between the twist angles of KB6 and the reference increase further in the last 20-25\% of the blade. This is due to the additional effect of torsion arising as a consequence of the geometric bend-twist coupling, to reduce the angle of attack by twisting towards feather. As such the pre-twist attains less negative values to compensate for this effect and to allow the airfoils in the affected region to operate optimally.
+The planform of the KB5 swept blade is compared to the reference blade in Figure \ref{fig:KB5_blade_geom} and Figure \ref{fig:KB5_sweep_prebend}. The chord length is seen to have decreased from the reference, as seen in Figure \ref{subfig:KB5_chord}. The reduction is greatest in the mid-span region of the blade. Additionally, the relative thickness of the blade sections have increased from the reference in the mid-span region. The decreased chord and increased relative thickness indicate a much slender blade profile than the reference. The twist angle is seen to increase in Figure \ref{subfig:KB5_twist}. It should be noted that the twist plotted in this figure, follows the right hand thumb rule convention for a z-coordinate axis that starts at the root and ends at the tip. Accordingly, it is regarded negative towards feather and positive towards stall. The twist in the KB5 blade has decreased compared to the reference case and is twisting less towards feather. This is to accommodate an increased tip-speed ratio of operation and the consequences of a slender blade design which has altered the angle of attack for which the airfoils can operate optimally. It is also observed from Figure \ref{subfig:KB5_twist} that difference between the twist angles of KB5 and the reference increase further in the last 20-25\% of the blade. This is due to the additional effect of torsion arising as a consequence of the geometric bend-twist coupling, to reduce the angle of attack by twisting towards feather. As such the pre-twist attains less negative values to compensate for this effect and to allow the airfoils in the affected region to operate optimally.
 
 
 % planform figures 
 \begin{figure}[tph]
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_chord.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_chord.eps}
 \caption{Chord distribution}
-\label{subfig:KB6_chord}
+\label{subfig:KB5_chord}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_twist.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_twist.eps}
 \caption{Twist distribution}
-\label{subfig:KB6_twist}
+\label{subfig:KB5_twist}
 \end{subfigure}
 
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_rthick.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_rthick.eps}
 \caption{Relative thickness distribution}
-\label{subfig:KB6_rthick}
+\label{subfig:KB5_rthick}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_ple.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_ple.eps}
 \caption{Pitch axis aft leading edge distribution}
-\label{subfig:KB6_ple}
+\label{subfig:KB5_ple}
 \end{subfigure}
 
 \caption{Blade planform properties}
-\label{fig:KB6_blade_geom}
+\label{fig:KB5_blade_geom}
 \end{figure}
 
 % sweep and prebend
 
 \begin{figure}[tph]
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_sweep.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_sweep.eps}
 \caption{Sweep distribution}
-\label{subfig:KB6_sweep}
+\label{subfig:KB5_sweep}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_sweep_scale.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_sweep_scale.eps}
 \caption{Sweep distribution to scale}
-\label{subfig:KB6_sweep_scale}
+\label{subfig:KB5_sweep_scale}
 \end{subfigure}
 
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_prebend.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_prebend.eps}
 \caption{Prebend distribution}
-\label{subfig:KB6_prebend}
+\label{subfig:KB5_prebend}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_prebend_scale.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_prebend_scale.eps}
 \caption{Prebend distribution to scale}
-\label{subfig:KB6_prebend_scale}
+\label{subfig:KB5_prebend_scale}
 \end{subfigure}
 
 \caption{Blade planform properties}
-\label{fig:KB6_sweep_prebend}
+\label{fig:KB5_sweep_prebend}
 \end{figure}
 
 \subsection{Structure}
-\label{subsec:KB6_structure}
+\label{subsec:KB5_structure}
 
 \subsubsection*{Composite layup}
-The material layup in the various regions of the blade sections along with the corresponding laminate thicknesses are shown in Figures \ref{fig:KB6_mat_r01} to \ref{fig:KB6_mat_r07}. The two outer triax layers remain unchanged while the rest of the internal layers are afforded design freedom during the optimization and vary according to the solution. 
+The material layup in the various regions of the blade sections along with the corresponding laminate thicknesses are shown in Figures \ref{fig:KB5_mat_r01} to \ref{fig:KB5_mat_r07}. The two outer triax layers remain unchanged while the rest of the internal layers are afforded design freedom during the optimization and vary according to the solution. 
 
-Figure \ref{fig:KB6_mat_r01} shows the material information in the trailing edge reinforcement of the blade. Referring to the blade cross-section shown in Figure \ref{fig:cross_section_def}, this region is between the points DP00 and DP02 on the pressure side and between DP15 and DP17 on the suction side. It is seen that compared to the reference the KB6 blade has a greater thickness in this region especially near the root. This has been carried out by adding more uniax material.
+Figure \ref{fig:KB5_mat_r01} shows the material information in the trailing edge reinforcement of the blade. Referring to the blade cross-section shown in Figure \ref{fig:cross_section_def}, this region is between the points DP00 and DP02 on the pressure side and between DP15 and DP17 on the suction side. It is seen that compared to the reference the KB5 blade has a greater thickness in this region especially near the root. This has been carried out by adding more uniax material.
 
-Figure \ref{fig:KB6_mat_r02} depicts the material layup in the main panel of the blade which is situated between the spar cap and trailing edge reinforcement. In Figure \ref{fig:cross_section_def} showing the cross-section information, this region lies between the points DP02 and DP04 on the pressure side and between DP13 and DP15 on the suction side. In this region the laminate thicknesses are mostly similar to the reference blade. Except near the root it is less thicker. This has been done by reducing the uniax material. Similarly the thickness is greater from 20\% to 40\% blade length. This has been facilitated by increasing the triax material in the layup. 
+Figure \ref{fig:KB5_mat_r02} depicts the material layup in the main panel of the blade which is situated between the spar cap and trailing edge reinforcement. In Figure \ref{fig:cross_section_def} showing the cross-section information, this region lies between the points DP02 and DP04 on the pressure side and between DP13 and DP15 on the suction side. In this region the laminate thicknesses are mostly similar to the reference blade. Except near the root it is less thicker. This has been done by reducing the uniax material. Similarly the thickness is greater from 20\% to 40\% blade length. This has been facilitated by increasing the triax material in the layup. 
 
-Figure \ref{fig:KB6_mat_r04} presents the material layup in the spar cap of the blade. From Figure \ref{fig:cross_section_def} it is seen that this region lies between the points DP04 and DP07 on the pressure side and between DP10 and DP13 on the suction side. The thickness of the laminate from 40\% span to 90\% span has been reduced considerably, by a factor of two on average. At the same time, the thickness between the root and around 30\% span has increased compared to the reference. This has been mainly done by altering the uniax material. Two thin layers of triax have also been added.
+Figure \ref{fig:KB5_mat_r04} presents the material layup in the spar cap of the blade. From Figure \ref{fig:cross_section_def} it is seen that this region lies between the points DP04 and DP07 on the pressure side and between DP10 and DP13 on the suction side. The thickness of the laminate from 40\% span to 90\% span has been reduced considerably, by a factor of two on average. At the same time, the thickness between the root and around 30\% span has increased compared to the reference. This has been mainly done by altering the uniax material. Two thin layers of triax have also been added.
 
-Figure \ref{fig:KB6_mat_r06} shows the material distribution and laminate thickness in the leading region of the blade situated between the leading edge and the spar cap. On referring to Figure \ref{fig:cross_section_def} it is seen that this region lies between the points DP07 and DP08 on the pressure side and between the points DP09 and DP10 on the suction side of the blade section. The laminate thickness has been reduced in the KB6 bade in the near root region, while it has been slightly increased from 20\% to 40\% span. The reduction in the laminate thickness is due to the removal of the uniax layer near the root. Whereas a layer of triax has been added throughout the early span and is responsible for the increase in thickness from 20\% to 40\%span.
+Figure \ref{fig:KB5_mat_r06} shows the material distribution and laminate thickness in the leading region of the blade situated between the leading edge and the spar cap. On referring to Figure \ref{fig:cross_section_def} it is seen that this region lies between the points DP07 and DP08 on the pressure side and between the points DP09 and DP10 on the suction side of the blade section. The laminate thickness has been reduced in the KB5 bade in the near root region, while it has been slightly increased from 20\% to 40\% span. The reduction in the laminate thickness is due to the removal of the uniax layer near the root. Whereas a layer of triax has been added throughout the early span and is responsible for the increase in thickness from 20\% to 40\%span.
 
-Figure \ref{fig:KB6_mat_r07} shows the material information in the leading edge reinforcement of the blade. From the cross-section shown in Figure \ref{fig:cross_section_def} it is seen that this region lies between the division points DP08 and DP09 and includes the leading edge. The laminate thickness has increased from the near root region until 50\% span. This increase is primarily due the addition of two triax layers. The thickness has also increased from around 70\% span until the tip. The increase here is attributed to the addition of uniax material in the layup. 
+Figure \ref{fig:KB5_mat_r07} shows the material information in the leading edge reinforcement of the blade. From the cross-section shown in Figure \ref{fig:cross_section_def} it is seen that this region lies between the division points DP08 and DP09 and includes the leading edge. The laminate thickness has increased from the near root region until 50\% span. This increase is primarily due the addition of two triax layers. The thickness has also increased from around 70\% span until the tip. The increase here is attributed to the addition of uniax material in the layup. 
 
 The material in the shear webs are not provided design freedom during the optimization and remain unchanged in thickness and material composition.
 
 \subsubsection*{Blade stiffnesses}
-Figure \ref{fig:KB6_stiffness} presents the flapwise, edgewise and torsional stiffnesses of the KB6 blade compared to the reference over a normalized span. All three stiffnesses are seen to have decreased for majority of the blade span except at the root and tip, which show a slight increase. This is a result of the reduction in the chord length in the KB6 blade compared to the reference as seen in Figure \ref{subfig:KB6_chord}. Cross-sectional stiffnesses in a thin composite laminate section scale to the cube of the local chord and scale directly with the laminate thickness. This dependence can be derived by applying classical laminate theory to a thin cross-section. The reader is directed to the ECN report by Kooijman \cite{kooijman1996bending} for the actual derivation. From the previous section it is seen that the laminate thicknesses too have been reduced considerably in the spar cap region, which is the structural entity that contributes the most towards cross-sectional stiffness. 
+Figure \ref{fig:KB5_stiffness} presents the flapwise, edgewise and torsional stiffnesses of the KB5 blade compared to the reference over a normalized span. All three stiffnesses are seen to have decreased for majority of the blade span except at the root and tip, which show a slight increase. This is a result of the reduction in the chord length in the KB5 blade compared to the reference as seen in Figure \ref{subfig:KB5_chord}. Cross-sectional stiffnesses in a thin composite laminate section scale to the cube of the local chord and scale directly with the laminate thickness. This dependence can be derived by applying classical laminate theory to a thin cross-section. The reader is directed to the ECN report by Kooijman \cite{kooijman1996bending} for the actual derivation. From the previous section it is seen that the laminate thicknesses too have been reduced considerably in the spar cap region, which is the structural entity that contributes the most towards cross-sectional stiffness. 
 
 
 %%Material thickness and layup
@@ -757,19 +757,19 @@ Figure \ref{fig:KB6_stiffness} presents the flapwise, edgewise and torsional sti
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_laminate_layers_r01.eps}
-\caption{Laminate layup of KB6 blade}
-\label{subfig:KB6_layers_r01}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_laminate_layers_r01.eps}
+\caption{Laminate layup of KB5 blade}
+\label{subfig:KB5_layers_r01}
 \end{subfigure}
 
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB6_r01_thickness.eps}
-\caption{Laminate thickness comparison of KB6 with reference}
-\label{subfig:KB6_thick_r01}
+\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB5_r01_thickness.eps}
+\caption{Laminate thickness comparison of KB5 with reference}
+\label{subfig:KB5_thick_r01}
 \end{subfigure}
 \caption{ Material in the trailing edge reinforcement}
-\label{fig:KB6_mat_r01}
+\label{fig:KB5_mat_r01}
 \end{figure}
 
 %region 2
@@ -781,19 +781,19 @@ Figure \ref{fig:KB6_stiffness} presents the flapwise, edgewise and torsional sti
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_laminate_layers_r02.eps}
-\caption{Laminate layup of KB6 blade}
-\label{subfig:KB6_layers_r02}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_laminate_layers_r02.eps}
+\caption{Laminate layup of KB5 blade}
+\label{subfig:KB5_layers_r02}
 \end{subfigure}
 
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB6_r02_thickness.eps}
-\caption{Laminate thickness comparison of KB6 with reference}
-\label{subfig:KB6_thick_r02}
+\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB5_r02_thickness.eps}
+\caption{Laminate thickness comparison of KB5 with reference}
+\label{subfig:KB5_thick_r02}
 \end{subfigure}
 \caption{ Material in the main panel (immediately behind the spar cap)}
-\label{fig:KB6_mat_r02}
+\label{fig:KB5_mat_r02}
 \end{figure}
 
 %region 4
@@ -805,19 +805,19 @@ Figure \ref{fig:KB6_stiffness} presents the flapwise, edgewise and torsional sti
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_laminate_layers_r04.eps}
-\caption{Laminate layup of KB6 blade}
-\label{subfig:KB6_layers_r04}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_laminate_layers_r04.eps}
+\caption{Laminate layup of KB5 blade}
+\label{subfig:KB5_layers_r04}
 \end{subfigure}
 
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB6_r04_thickness.eps}
+\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB5_r04_thickness.eps}
 \caption{Laminate thickness comparison with reference}
-\label{subfig:KB6_thick_r04}
+\label{subfig:KB5_thick_r04}
 \end{subfigure}
 \caption{ Material in the spar cap}
-\label{fig:KB6_mat_r04}
+\label{fig:KB5_mat_r04}
 \end{figure}
 
 %region 6
@@ -829,19 +829,19 @@ Figure \ref{fig:KB6_stiffness} presents the flapwise, edgewise and torsional sti
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_laminate_layers_r06.eps}
-\caption{Laminate layup of KB6 blade}
-\label{subfig:KB6_layers_r06}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_laminate_layers_r06.eps}
+\caption{Laminate layup of KB5 blade}
+\label{subfig:KB5_layers_r06}
 \end{subfigure}
 
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB6_r06_thickness.eps}
-\caption{Laminate thickness comparison of KB6 with reference}
-\label{subfig:KB6_thick_r06}
+\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB5_r06_thickness.eps}
+\caption{Laminate thickness comparison of KB5 with reference}
+\label{subfig:KB5_thick_r06}
 \end{subfigure}
 \caption{ Material in the leading region (immediately in front of the spar cap)}
-\label{fig:KB6_mat_r06}
+\label{fig:KB5_mat_r06}
 \end{figure}
 
 %region 7
@@ -853,168 +853,168 @@ Figure \ref{fig:KB6_stiffness} presents the flapwise, edgewise and torsional sti
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_laminate_layers_r07.eps}
-\caption{Laminate layup of KB6 blade}
-\label{subfig:KB6_layers_r07}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_laminate_layers_r07.eps}
+\caption{Laminate layup of KB5 blade}
+\label{subfig:KB5_layers_r07}
 \end{subfigure}
 
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB6_r07_thickness.eps}
+\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB5_r07_thickness.eps}
 \caption{Laminate thickness comparison with reference}
-\label{subfig:KB6_thick_r07}
+\label{subfig:KB5_thick_r07}
 \end{subfigure}
 \caption{ Material in the leading edge reinforcement}
-\label{fig:KB6_mat_r07}
+\label{fig:KB5_mat_r07}
 \end{figure}
 
 %% stiffnesses
 %
 \begin{figure}[tph]
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_flapStiff_log.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_flapStiff_log.eps}
 \caption{Flapwise stiffness on log scale}
-\label{subfig:KB6_flapstiff_log}
+\label{subfig:KB5_flapstiff_log}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_flapStiff_ratio.eps}
-\caption{Flapwise stiffness ratio (KB6/reference)}
-\label{subfig:KB6_flapstiff_ratio}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_flapStiff_ratio.eps}
+\caption{Flapwise stiffness ratio (KB5/reference)}
+\label{subfig:KB5_flapstiff_ratio}
 \end{subfigure}
 
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_edgeStiff_log.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_edgeStiff_log.eps}
 \caption{Edgewise stiffness on log scale}
-\label{subfig:KB6_edgestiff_log}
+\label{subfig:KB5_edgestiff_log}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_edgeStiff_ratio.eps}
-\caption{Edgewise stiffness ratio (KB6/reference)}
-\label{subfig:KB6_edgestiff_ratio}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_edgeStiff_ratio.eps}
+\caption{Edgewise stiffness ratio (KB5/reference)}
+\label{subfig:KB5_edgestiff_ratio}
 \end{subfigure}
 
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_torsStiff_log.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_torsStiff_log.eps}
 \caption{Torsional stiffness on log scale}
-\label{subfig:KB6_torsstiff_log}
+\label{subfig:KB5_torsstiff_log}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_torsStiff_ratio.eps}
-\caption{Torsional stiffness ratio (KB6/reference)}
-\label{subfig:KB6_torsstiff_ratio}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_torsStiff_ratio.eps}
+\caption{Torsional stiffness ratio (KB5/reference)}
+\label{subfig:KB5_torsstiff_ratio}
 \end{subfigure}
 
 \caption{ Stiffness comparisons with reference.}
-\label{fig:KB6_stiffness}
+\label{fig:KB5_stiffness}
 \end{figure}
 
 \subsection{Steady-state performance}
 The steady state operational performance and load response are discussed. It is important to note that the results being discussed in this section pertain to the response of the blade design as recorded during the optimization. The calculations during the optimization are performed in the aeroelastic code HAWCStab2, wherein a nonlinear finite element beam model is coupled with an unsteady blade element momentum (BEM) aerodynamic model considering induction from the shed vorticity, dynamic stall and dynamic inflow \cite{hawcstab2}.
 
-The steady state power and thrust of the KB6 rotor is shown in Figure \ref{fig:KB6_power_thrust}. The KB6 rotor generates rated power at a wind speed of 10 m/s whereas the reference rotor produces the same at 11 m/s, as seen in Figure \ref{subfig:KB6_pcurve}. The power produced by KB6 is higher in the variable speed region with the greatest difference of 11.4 kW observed at a wind speed of 9.5 m/s. From Figure \ref{subfig:KB6_thrust} presenting the thrust curve, it is seen that the thrust too is greater in KB6 in the variable speed region. However, the peak thrust produced at a wind speed of 9.5m/s is 0.5\% lower than the reference turbine. The optimal power coefficient for the KB6 rotor is $0.476$ and is held constant in the variable speed region until the wind speed between 8 and 9 m/s where the rated rotor speed of $70$ rpm is attained. This is shown in Figure \ref{subfig:KB6_CP}. Beyond this point and until it attains the rated power at a wind speed of 10 m/s, the power coefficient decreases as a result of decreasing tip-speed ratio with rising wind speed. Whereas the reference rotor has a optimal constant power coefficient of $0.46$ which is maintained until it attains the rated rotor speed of $70$ rpm at a wind speed of 10 m/s. Figure \ref{subfig:KB6_CT} shows the thrust coefficient over the operational wind speed range of the turbine. The thrust coefficient for KB6 is higher than that for the reference rotor, and it decreases with rising wind speed in the variable speed region. This is a result of the blade increasingly twisting towards the feather with rising wind speed due to the bend-twist coupling effect as a consequence of the backward sweep in the blade. Due the backward sweep, a larger flapwise force will generate greater torsional moments resulting in increased torsion towards feather. The decrease in the thrust coefficient is even greater beyond the 8 - 9 m/s wind speed range, during which the KB6 rotor attains rated rotor speed. This decrease is due to the reduction in loading as a result of decreasing tip-speed ratio additionally contributing to the load reduction being offered by the geometric bend-twist coupling. Such passive load alleviation mechanisms allow for a larger rotor that can produce more power for a considerably low increase of the aerodynamic loads over those produced by the reference rotor. Furthermore, the peak loading is similar to that of the reference rotor.  
+The steady state power and thrust of the KB5 rotor is shown in Figure \ref{fig:KB5_power_thrust}. The KB5 rotor generates rated power at a wind speed of 10 m/s whereas the reference rotor produces the same at 11 m/s, as seen in Figure \ref{subfig:KB5_pcurve}. The power produced by KB5 is higher in the variable speed region with the greatest difference of 11.4 kW observed at a wind speed of 9.5 m/s. From Figure \ref{subfig:KB5_thrust} presenting the thrust curve, it is seen that the thrust too is greater in KB5 in the variable speed region. However, the peak thrust produced at a wind speed of 9.5m/s is 0.5\% lower than the reference turbine. The optimal power coefficient for the KB5 rotor is $0.476$ and is held constant in the variable speed region until the wind speed between 8 and 9 m/s where the rated rotor speed of $70$ rpm is attained. This is shown in Figure \ref{subfig:KB5_CP}. Beyond this point and until it attains the rated power at a wind speed of 10 m/s, the power coefficient decreases as a result of decreasing tip-speed ratio with rising wind speed. Whereas the reference rotor has a optimal constant power coefficient of $0.46$ which is maintained until it attains the rated rotor speed of $70$ rpm at a wind speed of 10 m/s. Figure \ref{subfig:KB5_CT} shows the thrust coefficient over the operational wind speed range of the turbine. The thrust coefficient for KB5 is higher than that for the reference rotor, and it decreases with rising wind speed in the variable speed region. This is a result of the blade increasingly twisting towards the feather with rising wind speed due to the bend-twist coupling effect as a consequence of the backward sweep in the blade. Due the backward sweep, a larger flapwise force will generate greater torsional moments resulting in increased torsion towards feather. The decrease in the thrust coefficient is even greater beyond the 8 - 9 m/s wind speed range, during which the KB5 rotor attains rated rotor speed. This decrease is due to the reduction in loading as a result of decreasing tip-speed ratio additionally contributing to the load reduction being offered by the geometric bend-twist coupling. Such passive load alleviation mechanisms allow for a larger rotor that can produce more power for a considerably low increase of the aerodynamic loads over those produced by the reference rotor. Furthermore, the peak loading is similar to that of the reference rotor.  
 
-The steady state load response of the KB6 and reference rotors are shown in Figure \ref{fig:KB6_load_response}. The flapwise blade root bending moment is increased in KB6 compared to the reference rotor, primarily due the 5.5\% increase in the blade length. This can be observed in Figure \ref{subfig:KB6_Mx}. The edgewise blade root bending moment is shown in Figure \ref{subfig:KB6_My}. It is seen to be slightly lower than the reference rotor. Edgewise moments are mainly driven by the mass of the blade and the reductions can be attributed to the 4.65\% lower blade mass of the KB6 rotor than the reference. The torsional moments shown in Figure \ref{subfig:KB6_Mz}, are seen to increase in absolute magnitude, with rising wind speeds in the variable speed region of the KB6 rotor. This is due the backward sweep of the blade that generates additional torsional moment due to the action of the flapwise forces, which increase with rising wind speeds. The negative sign of the torsional moments indicate that the moments are directed in twisting the blade towards the feather. Thus, for rising wind speeds, the increasing flapwise force makes the blade twist increasingly towards the feather. Beyond the point at which the rated rotor speed is attained for the KB6 rotor, the decreasing tip-speed ratio slightly reduces the flapwise forces thus relatively reducing the magnitude of the torsional moment until 10 m/s at which rated power is achieved. Beyond this point the same phenomenon is repeated, but is mainly driven by reduction in the tip-speed ratio caused by pitching of the blades.
+The steady state load response of the KB5 and reference rotors are shown in Figure \ref{fig:KB5_load_response}. The flapwise blade root bending moment is increased in KB5 compared to the reference rotor, primarily due the 5.5\% increase in the blade length. This can be observed in Figure \ref{subfig:KB5_Mx}. The edgewise blade root bending moment is shown in Figure \ref{subfig:KB5_My}. It is seen to be slightly lower than the reference rotor. Edgewise moments are mainly driven by the mass of the blade and the reductions can be attributed to the 4.65\% lower blade mass of the KB5 rotor than the reference. The torsional moments shown in Figure \ref{subfig:KB5_Mz}, are seen to increase in absolute magnitude, with rising wind speeds in the variable speed region of the KB5 rotor. This is due the backward sweep of the blade that generates additional torsional moment due to the action of the flapwise forces, which increase with rising wind speeds. The negative sign of the torsional moments indicate that the moments are directed in twisting the blade towards the feather. Thus, for rising wind speeds, the increasing flapwise force makes the blade twist increasingly towards the feather. Beyond the point at which the rated rotor speed is attained for the KB5 rotor, the decreasing tip-speed ratio slightly reduces the flapwise forces thus relatively reducing the magnitude of the torsional moment until 10 m/s at which rated power is achieved. Beyond this point the same phenomenon is repeated, but is mainly driven by reduction in the tip-speed ratio caused by pitching of the blades.
 
-The steady state physical response of the structure is shown in Figure \ref{fig:KB6_deflections}. Figure \ref{subfig:KB6_tors_posn} shows the steady state torsional response of the rotor at a wind speed of 9 m/s. The KB6 blade is seen to torsion towards the feather with the absolute magnitude increasing with the normalized span. The increase in torsion corresponds to the increase in the amount of backward sweep along the span, as seen in Figure \ref{subfig:KB6_sweep}. The spanwise blade torsion with increasing wind speeds in the variable speed region is shown in Figure \ref{subfig:KB6_tors_posn_diffwsp}. It is seen that the blade twists increasingly towards the feather for increasing wind speeds, until 85\% blade span. For the last 15\% of the KB6 blade span the blade twists increasingly towards stall with rising wind speeds. %%%SHould I write about the prebend affecting the torsion as it reduces the flapwise force distribution?? But maybe a further analysis is required to support it.
-The flapwise positions of the blade sections are shown in Figure \ref{subfig:KB6_flap_posn} at a wind speed of 9 m/s. The KB6 blade is seen to bend towards the tower with its magnitude increasing along the span until approximately 80\% of the blade length. At this point the blade attains a position closest to the tower. Beyond this point the blade is seen to deflect away from the tower relative to its closest position, until the tip. %\textcolor{red}{This behaviour is attributed to the large gradient in the prebend for the corresponding spanwise location. }
-Figure \ref{subfig:KB6_flap_pson_diffwsp} shows the flapwise positions of the blade for different wind speeds in the variable speed region of the KB6 rotor. The blade increasingly deflects towards the tower with rising wind speeds, due to increasing flapwise bending moments as seen in Figure \ref{subfig:KB6_Mx}. The flapwise bending moment moment is seen to attain its highest value at a wind speed of 9 m/s corresponding to the resulting flapwise blade positions.
+The steady state physical response of the structure is shown in Figure \ref{fig:KB5_deflections}. Figure \ref{subfig:KB5_tors_posn} shows the steady state torsional response of the rotor at a wind speed of 9 m/s. The KB5 blade is seen to torsion towards the feather with the absolute magnitude increasing with the normalized span. The increase in torsion corresponds to the increase in the amount of backward sweep along the span, as seen in Figure \ref{subfig:KB5_sweep}. The spanwise blade torsion with increasing wind speeds in the variable speed region is shown in Figure \ref{subfig:KB5_tors_posn_diffwsp}. It is seen that the blade twists increasingly towards the feather for increasing wind speeds, until 85\% blade span. For the last 15\% of the KB5 blade span the blade twists increasingly towards stall with rising wind speeds. %%%SHould I write about the prebend affecting the torsion as it reduces the flapwise force distribution?? But maybe a further analysis is required to support it.
+The flapwise positions of the blade sections are shown in Figure \ref{subfig:KB5_flap_posn} at a wind speed of 9 m/s. The KB5 blade is seen to bend towards the tower with its magnitude increasing along the span until approximately 80\% of the blade length. At this point the blade attains a position closest to the tower. Beyond this point the blade is seen to deflect away from the tower relative to its closest position, until the tip. %\textcolor{red}{This behaviour is attributed to the large gradient in the prebend for the corresponding spanwise location. }
+Figure \ref{subfig:KB5_flap_pson_diffwsp} shows the flapwise positions of the blade for different wind speeds in the variable speed region of the KB5 rotor. The blade increasingly deflects towards the tower with rising wind speeds, due to increasing flapwise bending moments as seen in Figure \ref{subfig:KB5_Mx}. The flapwise bending moment moment is seen to attain its highest value at a wind speed of 9 m/s corresponding to the resulting flapwise blade positions.
 
-The angles of attack along the span for different wind speeds in the variable speed region of the KB6 rotor is seen in Figure \ref{fig:KB6_aoa}. The angles of attack are seen to decrease with rising wind speeds until the wind speed of 8 m/s. The KB6 rotor attains its rotor speed between a wind speed of 8 m/s and 9 m/s, marking the end of the variable speed region. At a wind speed of 9m/s the angles of attack are seen to attain a higher value than the rest of the wind speeds. %%Is the airfoil entering stall? Need Cl to examine that. What is the design angle of attack of the new airfoils? Need Cl/Cd to get region of maximum efficiency.....
+The angles of attack along the span for different wind speeds in the variable speed region of the KB5 rotor is seen in Figure \ref{fig:KB5_aoa}. The angles of attack are seen to decrease with rising wind speeds until the wind speed of 8 m/s. The KB5 rotor attains its rotor speed between a wind speed of 8 m/s and 9 m/s, marking the end of the variable speed region. At a wind speed of 9m/s the angles of attack are seen to attain a higher value than the rest of the wind speeds. %%Is the airfoil entering stall? Need Cl to examine that. What is the design angle of attack of the new airfoils? Need Cl/Cd to get region of maximum efficiency.....
 % power and thrust 
 \begin{figure}[tph]
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_power_diff_HS2.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_power_diff_HS2.eps}
 \caption{Power curve with absolute difference from reference}
-\label{subfig:KB6_pcurve}
+\label{subfig:KB5_pcurve}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_thrust_HS2.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_thrust_HS2.eps}
 \caption{Thrust curve}
-\label{subfig:KB6_thrust}
+\label{subfig:KB5_thrust}
 \end{subfigure}
 
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_Cp_HS2.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_Cp_HS2.eps}
 \caption{Power coefficient curve}
-\label{subfig:KB6_CP}
+\label{subfig:KB5_CP}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_CT_HS2.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_CT_HS2.eps}
 \caption{Thrust coefficient curve}
-\label{subfig:KB6_CT}
+\label{subfig:KB5_CT}
 \end{subfigure}
 
 \caption{Steady state power and thrust curves}
-\label{fig:KB6_power_thrust}
+\label{fig:KB5_power_thrust}
 \end{figure}
 
 % load response
 \begin{figure}[tph]
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_MxBR_HS2.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_MxBR_HS2.eps}
 \caption{Flapwise blade root bending moment}
-\label{subfig:KB6_Mx}
+\label{subfig:KB5_Mx}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_MyBR_HS2.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_MyBR_HS2.eps}
 \caption{Edgewise blade root bending moment}
-\label{subfig:KB6_My}
+\label{subfig:KB5_My}
 \end{subfigure}
 
 \begin{subfigure}{\textwidth}
 \centering
-\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB6_steady_MzBR_HS2.eps}
+\includegraphics[width=0.50\linewidth]{figures/KB6_final/KB5_steady_MzBR_HS2.eps}
 \caption{Torsional blade root moment}
-\label{subfig:KB6_Mz}
+\label{subfig:KB5_Mz}
 \end{subfigure}
  
 \caption{Steady state load response}
-\label{fig:KB6_load_response}
+\label{fig:KB5_load_response}
 \end{figure}
 
 %% torsion, blade tip deflection
 \begin{figure}[tph]
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_torsion_09.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_torsion_09.eps}
 \caption{Torsion at 9m/s}
-\label{subfig:KB6_tors_posn}
+\label{subfig:KB5_tors_posn}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_torsion_diffwsp.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_torsion_diffwsp.eps}
 \caption{Torsion for different wind speeds in the variable speed region}
-\label{subfig:KB6_tors_posn_diffwsp}
+\label{subfig:KB5_tors_posn_diffwsp}
 \end{subfigure}
 
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_Flap_deflec_HS2.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_Flap_deflec_HS2.eps}
 \caption{Flapwise blade tip position}
-\label{subfig:KB6_flap_posn}
+\label{subfig:KB5_flap_posn}
 \end{subfigure}
  ~
 \begin{subfigure}{0.50\textwidth}
-\includegraphics[width=\linewidth]{figures/KB6_final/KB6_Flap_deflec_WSP_HS2.eps}
+\includegraphics[width=\linewidth]{figures/KB6_final/KB5_Flap_deflec_WSP_HS2.eps}
 \caption{Flapwise blade tip position for wind speeds in variable speed region}
-\label{subfig:KB6_flap_pson_diffwsp}
+\label{subfig:KB5_flap_pson_diffwsp}
 \end{subfigure}
 
 \caption{Steady state blade response}
-\label{fig:KB6_deflections}
+\label{fig:KB5_deflections}
 \end{figure}
 
 %%Angle of attack
 
 \begin{figure}[tph]
 \centering
-\includegraphics[width=0.8\linewidth]{figures/KB6_final/KB6_AoA_WSP_HS2.eps}
+\includegraphics[width=0.8\linewidth]{figures/KB6_final/KB5_AoA_WSP_HS2.eps}
 \caption{Steady state angles of attack along the blade span for wind speeds in variable speed region}
-\label{fig:KB6_aoa}
+\label{fig:KB5_aoa}
 \end{figure}
 
 \section{Conclusion}

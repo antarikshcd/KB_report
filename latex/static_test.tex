@@ -1,17 +1,17 @@
 \chapter{Static analysis}
 \label{ch:load_test}
-A static analysis of the KB5 optimized blade is carried out. In Section \ref{sec:load_test} the blade tip is loaded with a flapwise force and the structural deflections are recorded. This is repeated with an edgewise force of the same magnitude. Section \ref{sec:modes} presents the natural frequencies of the first five modes of the KB5 optimized blade. 
+A static analysis of the KB5 optimized blade is carried out. In Section \ref{sec:load_test} the blade tip is loaded with a flapwise force and the structural deflections are recorded. This is repeated with an edgewise force of the same magnitude. Section \ref{sec:eigen} presents the natural frequencies of the first five modes of the KB5 optimized blade. 
 \section{Load test}
 \label{sec:load_test}
-The structural response of the finalized blade design KB5 under the action of a static flapwise force at the blade tip is presented. The analysis is carried out in the time domain aero-servo-elastic tool HAWC2. 
+The structural responses of the finalized blade design KB5 under the action of static flapwise and edgewise forces at the blade tip are presented. The analysis is carried out in the time domain aero-servo-elastic tool HAWC2. 
 \paragraph{Note on the coordinate system:}
 A coordinate system is fixed at the root of the blade with the negative z-axis running from root to tip, the x-axis (blade edgewise) is out of the plane and y-axis (blade flapwise) from right to left. In this coordinate system, the blade root can be considered as being fixed to an imaginary ground with the blade tip pointing skywards. Thus, a twist towards feather would be positive and towards stall would be negative.
 
-A flapwise force of $10$ kN is applied at the blade tip in the positive y-direction. This is followed by the application of an edgewise force of the same magnitude in the positive x-direction. The initial states, final states and resulting deflections for the reference rotor and the KB5 optimized blades are shown in Table \ref{tab:flap_static_load_test} and Table \ref{tab:edge_static_load_test} for the flapwise and edgewise loads respectively. The unloaded positional values of the tip in the y-direction and x- direction represents the prebend and the sweep respectively. While the unloaded twist value represents the pre-twist of the blade section at the tip. The KB5 blade is seen to deflect more than the reference blade both in the flapwise as well as the edgewise directions owing to a reduction in the stiffnesses, as shown in Section \ref{sec:final_design}. The torsional deflection in KB5 is also much higher than in the reference blade with the blade twisting towards feather. The high deflection is attributed to the combined effect of reduced torsional deflection compared to the reference, and the presence of bend-twist coupling towards feather due to the backward sweep.
+A flapwise force of $10$ kN is applied at the blade tip in the positive y-direction. This is followed by the application of an edgewise force of the same magnitude in the positive x-direction. The initial states, final states and resulting deflections for the reference rotor and the KB5 optimized blades are shown in Table \ref{tab:flap_static_load_test} and Table \ref{tab:edge_static_load_test} for the flapwise and edgewise tip loads respectively. The unloaded positional values of the tip in the y-direction and x- direction represents the prebend and the sweep. While the unloaded twist value represents the pre-twist of the blade section at the tip. The KB5 blade is seen to deflect more than the reference blade both in the flapwise as well as the edgewise directions owing to a reduction in the stiffnesses, as shown in Section \ref{sec:final_design}. The torsional deflection in KB5 is also much higher than in the reference blade with the blade twisting towards feather. The high deflection is attributed to the combined effect of reduced torsional deflection compared to the reference, and the presence of bend-twist coupling towards feather due to the backward sweep.
 
 \begin{table}[pth]
 \centering
-\caption{Strucutral response of reference and KB5 blades under the action of a flapwise static tip load}
+\caption{Structural response of reference and KB5 blades under the action of a flapwise static tip load}
 \label{tab:flap_static_load_test}
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
@@ -25,16 +25,35 @@ Twist {[}deg{]}            & -0.87    & -4.67  & -3.8       & -9.60    & 23.88  
 
 \begin{table}[pth]
 \centering
-\caption{Strucutral response of reference and KB5 blades under the action of an edgewise static tip load}
+\caption{Structural response of reference and KB5 blades under the action of an edgewise static tip load}
 \label{tab:edge_static_load_test}
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
 \multirow{2}{*}{Quantity}  & \multicolumn{3}{l|}{Reference} & \multicolumn{3}{l|}{KB5}       \\ \cline{2-7} 
                            & Unloaded & Loaded & Deflection & Unloaded & Loaded & Deflection \\ \hline
-tip - y (flapwise) {[}m{]} & -0.27    & 2.50   & +2.77      & -0.98    & 5.41   & +6.39      \\
-tip - x (edgewise) {[}m{]} & -0.01    & 0.17   & +0.18      & -0.50    & -0.24  & +0.26      \\
-Twist {[}deg{]}            & -0.87    & -4.67  & -3.8       & -9.60    & 23.88  & +33.48      \\ \hline
+tip - y (flapwise) {[}m{]} & -0.27    & 0.15   & +0.42      & -0.98    & -3.00   & -2.02      \\
+tip - x (edgewise) {[}m{]} & -0.01    & 0.64   & +0.65      & -0.50    & 2.23  & +2.73      \\
+Twist {[}deg{]}            & -0.87    & -7.99  & -7.12      & -9.60    & 91.83  & +101.43      \\ \hline
 \end{tabular}
 \end{table}
 
-\section{Eigen analysis}
+\section{Eigenvalue analysis}
+\label{sec:eigen}
+An eigenvalue analysis of the optimized KB5 blade is carried out in HAWC2. The blade natural frequencies along with their respective logarithmic decrements for the first six modes are shown in Table \ref{tab:eigen}.
+
+\begin{table}[pth]
+\centering
+\caption{Natural frequencies of the isolated KB5 blade}
+\label{tab:eigen}
+\begin{tabular}{|l|l|l|}
+\hline
+Mode             & Natural frequency {[}Hz{]} & Logarithmic Decrement {[}\%{]} \\ \hline
+1st flap mode    & 1.90                       & 1.67                           \\
+1st edge mode    & 4.92                       & 3.02                           \\
+2nd flap mode    & 6.24                       & 4.00                           \\
+2nd edge mode    & 11.25                      & 9.30                           \\
+3rd flap mode    & 15.14                      & 7.86                           \\
+1st torsion mode & 19.98                      & 16.30                          \\
+\hline
+\end{tabular}
+\end{table}

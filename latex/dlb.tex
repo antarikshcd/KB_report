@@ -2,20 +2,19 @@
 
 \section{Introduction}
 
-The design load basis considered for this report is based on the IEC 61400-1 standard. A more elaborate discussion and interpration of that standard is given in \cite{hansen_design_2015}.
+The design load basis (DLB) considered for this report is based on the IEC 61400-1 standard. A more elaborate discussion and interpration of that standard is given in \cite{hansen_design_2015}. The aeroelastic code used for these investigations is HAWC2 \cite{hawc2_manual}.
 
 The following rotor configurations have been considered:
 \begin{itemize}
 	\item reference (referred to as baseline or baseline100kw in the figures)
-	\item KB1
-	\item KB2
+	\item KB5
 \end{itemize}
 
-The figures included in the appendices \ref{app:baseline-vs-KB1} and \ref{app:baseline-vs-KB2} show the minima, mean, maxima and standard deviations for all of the simulations considered within the given design load case. For a more elaborate description of those cases the reader is referred to \cite{hansen_design_2015}.
+The statistics are included in section \ref{tables:baseline-vs-KB6} as tables, and as plots in section \ref{app:baseline-vs-KB6}. The plots show the minima, mean, maxima and standard deviations for all of the simulations considered within the given design load case. The tables give the mininima of the minima, and the maxima of the maxima for each DLC and channel. For a more elaborate description of the considered design load basis the reader is referred to \cite{hansen_design_2015}. The considered design load cases (DLC's) for this report are the following: DLC's 1.2, 2.4, 3.1, 4.1, and 6.4.
 
 This report does not include selected time series plots of the design load basis analysis, although some of the conclusions presented within the the discussion section (see section \ref{sec:dlb:discussion}) are based on the analysis of individual time series.
 
-Appendix \ref{app:baseline-vs-KB1} and \ref{app:baseline-vs-KB2} include the comparison between the reference rotor and KB1, and reference rotor and KB2 respectively. The following channels are considered:
+Appendix \ref{app:baseline-vs-KB6} include the comparison between the reference rotor and KB5. The following channels are considered:
 \begin{itemize}
 	\item Electrical power [W], excluding losses.
     \item Rotor speed [rpm]
@@ -37,42 +36,35 @@ To accommodate the comparison the figures include two different rotors, but the 
 \section{Stiff Tower}
 \label{sec:dlb:Stiff Tower}
 
-The tower stiffness was first estimated based on a quantitative description and drawings provided by the turbine manufacturer. However, the stiffness and mass properties of the derived structural model ended up being very close to the 3P frequency at rated wind speed and above. This resulted in a sharp increase in tower side-side, blade-edge and shaft torsional loads. Knowing that this turbine is actually produced and being operated in the field, it is assumed that tower model initially derived from the given data was not sufficiently accurate. Until more detailed structural data becomes available, the tower is considered to be stiff. Once a sufficiently accurate description of the tower is known a flexible tower model can be introduced to re-assess the design load basis. Depending on the eigenfrequencies and damping of the tower, the introduction of tower flexibility is expected to affect the results.
+The tower stiffness was first estimated based on a quantitative description and drawings provided by the turbine manufacturer. However, the stiffness and mass properties of the derived structural model ended up being very close to the 3P frequency at rated wind speed and above. This resulted in a sharp increase in tower side-side, blade-edge and shaft torsional loads. Considering that this platform has been produced and is being operated in the field, it is assumed that tower model initially derived from the given data was not sufficiently accurate. Until more detailed structural data becomes available, the tower is considered to be stiff. Once a sufficiently accurate description of the tower is known a flexible tower model can be introduced to re-assess the design load basis. Depending on the eigenfrequencies and damping of the tower, the introduction of tower flexibility is expected to affect the results.
 
 
 \section{Controller Tuning}
 \label{sec:dlb:Controller Tuning}
 
-For this study the basic DTU Wind Energy controller is used \cite{hansen_basic_2013}. The controller is tuned based on the reference rotor using the pole placement technique as implemented for a 1 DOF model in HAWCStab2. The effective controller tuning parameters of the test turbine, however, are unknown at this stage in the project.
+For this study the basic DTU Wind Energy controller is used \cite{hansen_basic_2013}. The controller is tuned based on the reference rotor using the pole placement technique as implemented for a 1 DOF model in HAWCStab2.
 
-The controller tuning settings are assumed to be fixed for all three rotors. This is due to practical limitations with respect to the platform and the corresponding controller on which the blade will be tested in a later stage of the project. However, the design procedure did not include any additional constraints to mitigate the effects of a fixed controller tuning setup. Under normal circumstances, a re-designed rotor requires different controller tuning parameters compared to the reference case. As the results in this section indicate, not re-tuning the controller has negative consequences for the turbine and blade loads. Future design iterations could include the definition and inclusion of a constrained that mimics the effect a fixed controller tuning on the blade loads.
+The controller tuning settings are assumed to be fixed for both the baseline and KB5 rotor since the controller tuning will not modifiable for the prototype with KB5 blades. Note that the design procedure did not include any additional constraints to mitigate the effects of a fixed controller tuning setup. Under normal circumstances, a re-designed rotor requires different controller tuning parameters compared to the reference case. The effect of not re-tuning the controller for KB5 is not considered within the scope of this report.
 
-In addition to DLC1.1, one extra load case is considered under normal operating conditions with wind shear and tower shadow, but without any turbulence. Additionally, a 1 m/s wind step is added to the wind speed towards the end of the simulation. The purpose of this load case to evaluate the response of the controller under the given quasi-steady inflow conditions, and can help in qualifying the effect of the constant controller tuning parameters. This test case is labelled as "test\_steadysteps".
+In addition to the considered design load cases, one extra load case is included: normal operating conditions with wind shear and tower shadow, but without any turbulence. Additionally, a 1 m/s wind step is added to the wind speed towards the end of the simulation. The purpose of this load case is to asses steady power curve performance. This test case is labelled as "test\_steadysteps".
 
 
-\section{Discussion}
+\section{Discussion and Conclusion}
 \label{sec:dlb:discussion}
 
-Both KB1 and KB2 show an increased loading envelope compared to the reference design. When considering DLC12 (see section \ref{sec:baseline-vs-KB1:dlc12} a clear increase in standard deviations and min/max loads is observed for high wind speeds. However, this load increase is likely to be caused by a poorly tuned controller (KB1 and KB2 are operating with the tuning parameters of the reference case). Figure \ref{fig:baseline-vs-KB1:dlc12:status} (the controller status flag) further shows that for high wind speeds certain cases have resulted in a shut down procedure due to a rotor over speed condition (over speed conditions are defined here as a 50\% increase over rated rotor speed, but the actual constrains of the test turbine are unknown).
-
-Figure \ref{fig:baseline-vs-KB1:dlc12:blade-root-torsion} indicates that at high wind speed the blade torsional loads are increased dramatically. However, the time series indicate that these extremes are connected to the turbine entering the over speed shut down state, and which is accompanied by the blades pitching out to 90 degrees.
-
-When considering DLC12 cases of wind speeds of 18 m/s and lower, a modest but consistent load decrease is observed for the various channels included here. This indicates that the KB1 and KB2 designs are both performing as intended, expect for the response at higher wind speeds due to inappropriate controller tuning settings. If these controller tuning effects can be mitigated, both KB1 and KB2 could be considered as improved versions (higher AEP, lower loads) with respect to the reference rotor.
-
-The comparison between the three rotors indicate that the controller tuning has an important effect on the loads. Knowing the load sensitivities with respect to controller tuning parameters should be considered in order to mitigate the uncertainties regarding the actual controller setup of the test turbine.
+The cases without turbulence (see section \ref{sec:baseline-vs-KB6:test_steadysteps} show that there is indeed an increased power output for KB6 in below rated conditions while at the same time the loads are either similar or reduced compared to the baseline rotor. This trend is also visible for the other load cases (see sections \ref{sec:baseline-vs-KB6:dlc12}-\ref{sec:baseline-vs-KB6:dlc64}). There is one outlier for KB6 that results in an increased tower base for-aft bending moment in DLC1.2 (see figure \ref{fig:baseline-vs-KB6:dlc12:tower-base-fa}). The cause of this could be due to the sub-optimal controller tuning of KB5, but a more detailed follow-up investigation is required before a final conclusion can be rendered. Further, a load increase can be observed for the blade root torsional bending moment. This increase is a consequence of the swept blade geometry.
 
 
 \section{Future Work}
 \label{sec:dlb:Future Work}
 
-The first iteration of the full DLB has indicated some additional points of attention before a second iteration of the design and full DLB evaluation report are to be considered:
+Considering that KB5 (or a rotor similar to KB5) is forecasted to be build and operated as a prototype, the following points are suggested for further analysis:
 
 \begin{itemize}
 	\item Include time series analysis of certain indicative results.
 	\item Determine an accurate model for the tower (eigenfreqencies, structural damping).
-	\item Include a constrained in future design and optimization runs to evaluate the controllability of the rotor given a fixed controller tuning configuration.
-	\item Re-evaluate rotor over-speed shut-down criteria.
-	\item Sensitivity study regarding controller tuning to account for the uncertainty caused by the unknown actual controller tuning parameters of the platform.
+	\item Determine controller tuning parameters from the turbine platform.
+	\item Sensitivity study regarding controller tuning parameters to account for the uncertainty caused by the unknown actual controller tuning parameters of the platform.
 	\item Tabulated results showing the differences in load statistics.
 	\item Tabulated extreme loads observed within each of the DLB's.
 	\item Brake down of fatigue loads, and life time fatigue loads.

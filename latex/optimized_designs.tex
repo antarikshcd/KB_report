@@ -214,7 +214,7 @@ The structural geometry for the blade is plotted in Figure \ref{fig:loftedstruct
 \caption{Overall properties of internal structure.}
 \centering
 \small
-\begin{tabular}{{ll}}
+\begin{tabular}{ll}
 \hline
 	Spar cap widths	 						& Linear taper 0.2 m (root) to 0.1 m (tip) \\
 	Trailing edge panel width upper			& 0.08 m	\\
@@ -252,6 +252,7 @@ This does not include adhesives, surface finishing, and a complete root design.
 %%------------------------------------------------------------------------------------------------------
 %% Start of design compariosions from HAWTOpt2
 %%-----------------------------------------------------------------------------------------------------
+
 \section{Design Studies}
 \label{sec:design_studies}
 
@@ -297,7 +298,8 @@ Tables \ref{tab:dv_summary} and \ref{tab:con_summary} provides a summary of desi
 \centering
 \caption{Free form deformation spline (FFD) design variables used in the optimizations.}
 \small
-\begin{tabular}{p{5cm}lp{6cm}}
+%\begin{tabular}{p{5cm}lp{6cm}}
+\begin{tabular}{lll}
 \hline
 \textbf{Parameter}		&	\# of DVs			& \textbf{Comment}	\\
 \hline
@@ -360,6 +362,30 @@ Lift coefficient @ $r/R=[0.5-1.]$	&	$<$ 1.4-1.1			&	Limit operational lift coeff
 \end{tabular}}
 \label{tab:con_summary}
 \end{table}
+
+\subsection{Design Assumptions}
+\label{subsec:assumptions}
+
+This section is here so the user understands the risks in using these designs. The section warns the user, outlines the missing information, the assumptions and the potential risk.
+
+It is important that the user of this design understand that insufficient information was given to complete a proper and complete design. The missing information was identified and presented to the project partners. To overcome this problem, the consortium agreed that we should make all the neccessary assumptions to carry out the design. Accordingly we have made several assumptions to complete this task. These assumptions were made with the best judgement based on experience and the information that had been provided to us. However, these assumptions are a major source of error and represent a risk to using this design.
+
+The user should be aware that there are risks to using these designs. We carried out the design with the understanding that these designs would used under the following conditions:
+
+\begin{enumerate}
+	\item The users understand that insufficient information was given and that actual performance and loads may not reflect the performance and loads predicted here.
+	\item The user will take the neccessary precautions to avoid serious problems.
+	\item The rotors as they are designed here will only be operated in a supervised setting without posing any risk of damages to people or property if a failure occurs.
+	\item The rotors as they are designed here will only be used for research purposes
+	\item The rotors as they are designed here will not be used by the public
+	\item The rotors as they are designed here will not be used for any commercial purposes until it is verified that the rotor can operate with the platform and controller safely according to the relavent international design standards for wind turbines.
+\end{enumerate}
+
+The first source of errors was in the information for the initial design and the platform. First, there were no load limits provided for the platform. One way to estimate these limits is to simulate the original design. However, the design information for that design was also incomplete. The airfoils were not given and only stiffness properties were given for the structure. To overcome this missing information, we selected a set of airfoils that are typically used in wind energy and assumed similar airfoils would have been used in the original design. For the structure, we assumed a standard spar-cap with 2 shear webs for the internal design. A structural design was developed through an optimization process where the design was varied to match the structural properties given to us. The risk of making these assumptions is that the estimated load envelope could exceed that of the platform causing a catastrophic failure of any of the platform components. 
+
+A tower vibration problem was identified when simulating the original design with the properties that were given to us. This indicates that the original design as given to us is unstable. Since it is unlikely that the original design would be successful with the instability problems we must assume the actual tower properties are different and that there is no stability problem. Thus, we assumed there were errors in the tower problems that that we should ignore the tower in our analysis. Accordingly we do not have full confidence in the true tower frequencies and we do not have sufficient information to ensure that the rotor does not excite tower modes. The risk, is that this design may not be perfectly matched with the actual tower and may cause serious vibration problems with the current tower.
+
+The other source of error was that no information was given about the controller. The controller dictates the rotational rate of the turbine and how pitch control is activated. These are crucial parameters in the loads and performance of the design. Typically, the controller is redesigned or tuned according to the rotor design. Without this information, we cannot simulate the actual operating points of this turbine. Instead, we used the DTU Wind Energy Controller in all our simulations. This controller has been developed purely for research purposes and is not representative of a true industrial controller. It is impossible for us to estimate the constants used in the actual controller, so it made no sense to develop a design based on fixed controller constants. Instead we allowed the optimization to vary these parameters assuming that the actual parameters were similar. We performed some sensitivity analysis to assess the affect of some controller constants. Furthermore, we believe that the controller should be tuned specifically for this design, so it is the responsibility of the user to correct any errors due to the controller tuning. The risks of these assumptions is that the design may not operate as intended. This could increase the loads or degrage the performance. The increased loads could cause failure to the blades and the platform.
 
 \subsection{Overview of the designs}
 \label{subsec:design_overview}
